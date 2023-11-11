@@ -55,7 +55,7 @@ categories: Find
       <li> Python
         <ul>
           <li><a href="https://www.bilibili.com/video/BV1ha4y1H7sx"> Python爬虫</a></li>
-          <li><a href="/download/pythonic.pdf"> Pythonic Writing</a></li>
+          <li> Pythonic</li>
           <li><a href="/https://www.devtaoism.com/"> Manim</a></li>
         </ul>
       </li>
