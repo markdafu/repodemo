@@ -1,6 +1,6 @@
 ---
 title: Repository
-description: My collection of resources on various areas
+description: My collection of learning materials
 date: 2023-08-18 00:00:00+0000
 math: true
 image: 5.png
@@ -23,7 +23,7 @@ categories: Find
           <li>&nbspConvex optimization -- Boyd</li>
         </ul>
       </li>
-      <li>Readings
+      <li>&nbspReadings
         <ul>
           <li><a href="/assets/download/mml-book.pdf">&nbspMath for ML</a></li>
           <li>&nbspLinear algebra and optimization for ML</li>
@@ -52,14 +52,14 @@ categories: Find
 <ul class="terminal-tree">
   <li>Coding
     <ul>
-      <li>Python
+      <li>&nbspPython
         <ul>
           <li><a href="https://www.bilibili.com/video/BV1ha4y1H7sx">&nbspPython爬虫</a></li>
           <li>&nbspPythonic</li>
           <li><a href="/https://www.devtaoism.com/">&nbspManim</a></li>
         </ul>
       </li>
-      <li>Julia
+      <li>&nbspJulia
         <ul>
           <li><a href="https://computationalthinking.mit.edu/Spring21/">&nbspMIT 18.S191</a></li>
         </ul>
