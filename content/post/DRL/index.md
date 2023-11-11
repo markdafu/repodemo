@@ -1,6 +1,7 @@
 ---
 title: 深度强化学习
 date: 2023-11-11
+image: 6.png
 categories: Learn
 tags: 
     - DeepRL
