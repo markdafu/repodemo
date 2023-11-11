@@ -72,7 +72,7 @@ Dear Dafu Zhu,
 
 Thank you for your interest in Mitacs’s Globalink Research Internship (GRI).
 
-We have completed our review of all GRI applications, and we are glad to inform you that your application is deemed eligible for a 2024 Globalink Research Internship. At this point, please do not contact any professors or book any tickets. This status update does not mean that you are granted a position for the 2024 Globalink Research Internship.
+> We have completed our review of all GRI applications, and we are glad to inform you that your application is deemed eligible for a 2024 Globalink Research Internship. At this point, please do not contact any professors or book any tickets. This status update does not mean that you are granted a position for the 2024 Globalink Research Internship.
 
 This email is only meant to provide information about the different status updates that you may receive during the next phase.
 
@@ -99,7 +99,9 @@ Please note that Mitacs will make every effort to match eligible candidates with
 
 ## Waitlist通知 11.11
 
-Thank you for your interest in Mitacs’s Globalink Research Internship (GRI). We are writing to inform you that your application status has been updated to “Waitlisted”.
+上封邮件说12月和1月中旬开始匹配，这封应该所有人都一样的，先设成 `waitlist` 之后再更新。
+
+> Thank you for your interest in Mitacs’s Globalink Research Internship (GRI). We are writing to inform you that your application status has been updated to “Waitlisted”.
 
 Please note that no action is currently required.
 Applicants are asked not to contact professors at this time.
