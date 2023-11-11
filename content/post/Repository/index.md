@@ -16,20 +16,19 @@ categories: Find
   <li>Machine Learning
     <ul>
       <li><a href="http://introtodeeplearning.com/"> MIT 6.S191</a></li>
-      <li><a href="https://marknotes.gitbook.io/mlmastery"> ML mastery</a></li>
       <li><a href="https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/"> Gil矩阵论</a></li>
       <li> 凸优化
         <ul>
           <li><a href="https://www.bilibili.com/video/BV1Pg4y187Ed/?spm_id_from=333.337.search-card.all.click"> Stanford公开课</a></li>
-          <li><a href="/download/bv_cvxbook.pdf"> Convex optimization -- Boyd</a></li>
+          <li> Convex optimization -- Boyd</li>
         </ul>
       </li>
       <li> Readings
         <ul>
-          <li><a href="/download/mml-book.pdf"> Math for ML</a></li>
-          <li><a href="/download/LA&O.pdf"> Linear algebra and optimization for ML</a></li>
-          <li><a href="/download/dlbook_cn_v0.5-beta.pdf"> 深度学习</a></li>
-          <li><a href="/download/matrixcookbook.pdf"> Matrix Cookbook</a></li>
+          <li><a href="/assets/download/mml-book.pdf"> Math for ML</a></li>
+          <li> Linear algebra and optimization for ML</li>
+          <li> 深度学习花书</li>
+          <li> Matrix Cookbook</li>
         </ul>
       </li>
     </ul>
@@ -43,7 +42,7 @@ categories: Find
     <ul>
       <li><a href="https://www.hello-algo.com/"> hello算法</a></li>
       <li><a href="https://sp18.datastructur.es/"> cs61b</a></li>
-      <li><a href="/download/Algorithms.pdf"> Algorithms(4e) -- a book</a></li>
+      <li> Algorithms(4e) </li>
     </ul>
   </li>
 </ul>
@@ -75,13 +74,7 @@ categories: Find
   <li> Quant
     <ul>
       <li><a href="https://github.com/LechGrzelak/Computational-Finance-Course"> Lech Grzelak</a></li>
-      <li> Thomas Sargent
-        <ul>
-          <li><a href="/download/quantecon-python-intro.pdf"> A first course</a></li>
-          <li><a href="/download/quantecon-python.pdf"> Intermediate</a></li>
-          <li><a href="/download/quantecon-python-advanced.pdf"> Advanced</a></li>
-        </ul>
-      </li>
+      <li> Thomas Sargent - Quant Econ</li>
     </ul>
   </li>
 </ul>
