@@ -15,8 +15,8 @@ categories: Find
 <ul class="terminal-tree">
   <li>Machine Learning
     <ul>
-      <li><a href="http://introtodeeplearning.com/"> MIT 6.S191</a></li>
-      <li><a href="https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/"> Gil矩阵论</a></li>
+      <li><a href="http://introtodeeplearning.com/">&nbspMIT 6.S191</a></li>
+      <li><a href="https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/">&nbspGil矩阵论</a></li>
       <li> 凸优化
         <ul>
           <li><a href="https://www.bilibili.com/video/BV1Pg4y187Ed/?spm_id_from=333.337.search-card.all.click"> Stanford公开课</a></li>
