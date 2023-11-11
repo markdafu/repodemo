@@ -1,0 +1,43 @@
+/* <link rel="stylesheet" href="/css/folder.css"> */
+
+ul.terminal-tree {
+    font-family: "Courier New", "STSongti-SC-Regular", Courier, monospace;
+    color: #073642;  /* Classic terminal green */
+    list-style: none;
+    padding-left: 3rem;
+    background: none;  /* Transparent background */
+    line-height: 1.5;
+  }
+  
+  /* Bullet style for top-level */
+  ul.terminal-tree > li:before {
+    content: '>';  /* Command prompt */
+    display: inline-block;
+    margin-right: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Indentation and style for nested lists */
+  ul.terminal-tree ul {
+    padding-left: 2rem;
+  }
+  
+  /* Tree branch style for nested lists */
+  ul.terminal-tree ul > li:before {
+    content: '├─ ';  /* Tree branch style */
+    display: inline-block;
+    margin-left: -3.2rem;  /* Adjust according to your preference */
+  }
+  
+  /* Special style for the last item in each category */
+  ul.terminal-tree ul > li:last-child:before {
+    content: '└─ ';
+  }
+  
+  /* Count the number of files in each folder and display it */
+  ul.terminal-tree > li:before:after {
+    content: attr(data-file-count);
+    color: #859900;  /* Yellow color for the file count */
+    font-weight: normal;
+    margin-left: 3rem;
+  }
