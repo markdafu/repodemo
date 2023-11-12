@@ -77,6 +77,11 @@ categories: Find
       <li>&nbspThomas Sargent - Quant Econ</li>
     </ul>
   </li>
+  <br>
+  <li>Fin Engineering
+    <ul>
+      <li><a href="https://www.youtube.com/playlist?list=PLM9WI-4yn8BIROK_B1HCsdAlFGvAMdSJr">&nbspOptions - Hull (youtube)</a></li>
+    </ul>
 </ul>
 
 ## Mathematics
