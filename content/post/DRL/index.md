@@ -9,7 +9,33 @@ tags:
 
 ## 学习资料
 
-[JoyRL](https://github.com/datawhalechina/joyrl-book)、[蘑菇书](https://datawhalechina.github.io/easy-rl/)、[蘑菇书manual](https://linklearner.com/learn/detail/91)、[小程序使用说明](https://mp.weixin.qq.com/s/iPmzb72Yk0mhIA2NYezXDg)、[学习者手册](https://mp.weixin.qq.com/s/pwWg0w1DL2C1i_Hs3SZedg)
+<link rel="stylesheet" href="/scss/custom.scss">
+
+<ul class="terminal-tree">
+    <li>蘑菇书
+      <ul>
+        <li><a href="https://github.com/datawhalechina/joyrl-book">&nbspJoyRL</a></li>
+        <li><a href="https://datawhalechina.github.io/easy-rl/">&nbspEasyRL</a></li>
+        <li><a href="https://linklearner.com/learn/detail/91">&nbspEasyRL学习手册</a></li>
+      </ul>
+    </li>
+    <br>
+    <li>组队学习
+      <ul>
+        <li><a href="https://mp.weixin.qq.com/s/iPmzb72Yk0mhIA2NYezXDg">&nbsp小程序使用说明</a></li>
+        <li><a href="https://mp.weixin.qq.com/s/pwWg0w1DL2C1i_Hs3SZedg">&nbsp学习者手册</a></li>
+      </ul>
+    </li>
+    <br>
+    <li>Lectures
+      <ul>
+        <li><a href="https://rail.eecs.berkeley.edu/deeprlcourse/">&nbspUCB - DRL</a></li>
+        <li><a href="https://www.bilibili.com/video/BV1sd4y167NS/?spm_id_from=333.337.search-card.all.click&vd_source=0747a479964faef65dc22d966c973b66">&nbsp赵世钰</a></li>
+      </ul>
+    </li>
+</ul>
+
+
 
 ## 进度安排
 
