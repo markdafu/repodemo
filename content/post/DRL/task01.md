@@ -1,6 +1,6 @@
 ---
 title: task01 - Markov决策过程和动态规划
-url: /drltask01/
+url: /repodemo/drltask01/
 ---
 
 $$
