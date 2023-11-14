@@ -14,7 +14,7 @@ tags:
 <ul class="terminal-tree">
     <li>蘑菇书
       <ul>
-        <li><a href="https://github.com/datawhalechina/joyrl-book">&nbspJoyRL</a></li>
+        <li><a href="https://johnjim0816.com/joyrl-book/#/">&nbspJoyRL</a></li>
         <li><a href="https://datawhalechina.github.io/easy-rl/">&nbspEasyRL</a></li>
         <li><a href="https://linklearner.com/learn/detail/91">&nbspEasyRL学习手册</a></li>
       </ul>
