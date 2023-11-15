@@ -64,15 +64,6 @@ f=\begin{bmatrix}
 \end{bmatrix}
 $$
 
-
-
-$$
-\begin{aligned}
-    s_t\xrightarrow{a_t} & s_{t+1}\\\
-    (&r_{t+1})
-\end{aligned}
-$$
-
 ### RL中的动态规划
 
 首先规范 Notation 很重要。基本型是 $S_t\xrightarrow{A_t}R_{t+1},S_{t+1}$，其中 $R_{t+1}$ 表示在状态 $S_t$ 时做 $A_t$ 的动作后收获的回报（这里用 $t+1$ 而不是 $t$ 纯粹是 convention，大部分 manual 上都这样写）。这个模型中有三个重要组成部分：策略、回报和状态价值（state value），都写成条件概率的形式
