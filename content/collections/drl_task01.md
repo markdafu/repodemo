@@ -4,7 +4,7 @@ date: 2023-11-13
 math: true
 ---
 
-## Overview
+## Markov Decision Process
 
 Markov过程表现以概率动态变化的结构，是很简化的模型，也是强化学习的基础。Markov性质指下一步的状态只和这一步有关，没有记忆。
 
@@ -25,11 +25,12 @@ $$
 \text{Markov}过程\xrightarrow{+奖励}\text{Markov}奖励过程 (MRP)\xrightarrow{+动作}\text{Markov}决策过程 (MDP)
 $$
 
+## 动态规划
+
 ![动态规划面试题](image-5.png)
 
 $$
-f(i,j)=
-\begin{cases}
+f(i,j)=\begin{cases}
 0 & i=0,j=0\\
 1 & i=0,j\neq 0\\
 1 & i\neq 0,j=0\\
@@ -62,6 +63,15 @@ f=\begin{bmatrix}
 1 & 0 & 0 & 0\\
 1 & 0 & 0 & 0
 \end{bmatrix}
+$$
+
+**Bellman Equation**
+
+$$
+\begin{aligned}
+    s_t\xrightarrow{a_t} & s_{t+1}\\
+    & (r_{t+1})\\
+\end{aligned}
 $$
 
 附：JoyRL typo
