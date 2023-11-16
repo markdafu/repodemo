@@ -30,7 +30,8 @@ tags:
     <li>Lectures
       <ul>
         <li><a href="https://rail.eecs.berkeley.edu/deeprlcourse/">&nbspUCB - DRL</a></li>
-        <li><a href="https://www.bilibili.com/video/BV1sd4y167NS/?spm_id_from=333.337.search-card.all.click&vd_source=0747a479964faef65dc22d966c973b66">&nbsp赵世钰</a></li>
+        <li><a href="https://www.bilibili.com/video/BV1sd4y167NS/?spm_id_from=333.337.search-card.all.click&vd_source=0747a479964faef65dc22d966c973b66">&nbsp赵世钰（数学推导）</a></li>
+        <li><a href="https://www.bilibili.com/video/BV12o4y197US">&nbsp王树森（速成，要DL基础）</a></li>
       </ul>
     </li>
 </ul>
@@ -42,7 +43,7 @@ tags:
 | 内容 | 天数 | 截止时间 |
 |:---:|:---:|:---:|
 |11.13开始 | | |
-| [绪论、马尔可夫过程、动态规划](/repodemo/collections/drl_task01) | 3天 | 11.16 3:00 |
+| [绪论、马尔可夫过程、动态规划](/collections/drl_task01) | 3天 | 11.16 3:00 |
 | 免模型预测、免模型控制 | 3天 | 11.19 3:00 |
 |深度学习基础 | 2天 | 11.21 3:00 |
 | DQN算法、DQN算法进阶 | 4天 | 11.25 3:00|

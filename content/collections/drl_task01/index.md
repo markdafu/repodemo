@@ -96,6 +96,8 @@ $$
 
 这个 $V_{\pi}(s)$ 就是 state value 的表达式。很直观地，它和当前状态 $s$ 以及策略 $\pi$ 有关，因此是基于 $s,\pi$ 的函数。
 
+### 公式推导
+
 现在有意思了。我们把 $G_t$ 换种形式写
 
 $$
@@ -166,6 +168,32 @@ $$
 
 这就是 state value 的 Bellman Equation，其实还有 action value 的，之后再说
 
+**更新：Action value 的贝尔曼方程**
+
+$$
+E[G_t|S_t=s]=\sum_i \pi(a_i|s) E[G_t|S_t=s,A_t=a_i]
+$$
+
+其中 $E[G_t|S_t=s,A_t=a_i]=Q_{\pi}(s,a_i)$，也就是在策略 $\pi$ 下，给定状态和行动 $s,a$ 产生的价值。因为相比 $V_{\pi}(s)$ 纳入了行动 $a$，故称为 action value。因此上式也可写作
+
+$$
+V_{\pi}(s)=\sum_i \pi(a_i|s)\cdot Q_{\pi}(s,a_i) \tag{1}
+$$
+
+对比之前 state value 的贝尔曼方程
+
+$$
+V_{\pi}(s)=\sum_i \pi(a_i|s)\cdot \left[ \sum_r P(r|s,a_i)\cdot r+\gamma\sum_{s'}V_{\pi}(s') \cdot P(s'|s,a_i)\right]
+$$
+
+容易发现
+
+$$
+Q_{\pi}(s,a_i)=\sum_r P(r|s,a_i)\cdot r+\gamma\sum_{s'}V_{\pi}(s') \cdot P(s'|s,a_i) \tag{2}
+$$
+
+式 $(1)$ 是由 action value 推 state value，式 $(2)$ 是由 state value 推 action value
+
 ### 求解 Bellman Equation
 
 推广为矩阵形式
@@ -176,7 +204,7 @@ $$
 
 其中 $P_{\pi}$ 是状态转移矩阵
 
-[解一] 矩阵求逆
+$[解一]$ 矩阵求逆
 
 $$
 v_{\pi} = (I-\gamma P_{\pi})^{-1}r_{\pi}
@@ -184,7 +212,7 @@ $$
 
 当状态很多时矩阵会非常大，求逆难度很高
 
-[解二] 数值解（迭代）
+$[解二]$ 数值解（迭代）
 
 $$
 v_{k+1}=r_{\pi}+\gamma P_{\pi}v_{k}
