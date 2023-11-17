@@ -220,7 +220,7 @@ $$
 
 可以证明 $\vec{v_{k}}\rightarrow \vec{v_{\pi}}, (k\rightarrow \infty)$
 
-思路：设 $\delta_k=v_k-v_{\pi}$，用 $\delta$ 表示 $v_k,v_{k+1}$，再代入 $v_{k+1}=r_{\pi}+\gamma P_{\pi}v_{k}$，化简会发现 $\delta_{k+1}=\gamma P_{\pi}\delta_k$，所以 $\delta_{k+n}=(\gamma P_{\pi})^n\delta_k$。因为 $\gamma<1$，状态转移矩阵 $P_{\pi}$ 的元素都 $\leqslant 1$（概率不能超过 1），所以 $(\gamma P_{\pi})^n\rightarrow 0,n\rightarrow \infty$，因此 $\delta_k\rightarrow 0$. $\square$
+思路：设 $\delta_k=v_k-v_{\pi}$，用 $\delta$ 表示 $v_k,v_{k+1}$，再代入 $v_{k+1}=r_{\pi}+\gamma P_{\pi}v_{k}$，化简会发现 $\delta_{k+1}=\gamma P_{\pi}\delta_k$，所以 $\delta_{k+n}=(\gamma P_{\pi})^n\delta_k$。因为 $\gamma<1$，状态转移矩阵的范数 $\Vert P_{\pi}\Vert \leqslant 1$（概率不能超过 1），所以 $(\gamma P_{\pi})^n\rightarrow 0,n\rightarrow \infty$，因此 $\delta_k\rightarrow 0$. $\square$
 
 > 参考：赵世钰
 
