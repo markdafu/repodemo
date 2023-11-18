@@ -72,7 +72,7 @@ $$
 |:---:|:---:|:---:|
 | $S_t\rightarrow A_t$ | 策略 | $\pi(A_t=a\vert S_t=s)$ |
 | $S_t,A_t\rightarrow R_{t+1}$ | 回报 | $P(R_{t+1}=r\vert S_t=s,A_t=a)$ |
-| $S_t,A_t\rightarrow S_{t+1}$ | state value | $P(S_{t+1}=s'\vert S_t=s,A_t=a)$ |
+| $S_t,A_t\rightarrow S_{t+1}$ | state probability | $P(S_{t+1}=s'\vert S_t=s,A_t=a)$ |
 
 扩展到多期，图为
 
