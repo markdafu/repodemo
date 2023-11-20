@@ -45,7 +45,7 @@ tags:
 |11.13开始 | | |
 | [绪论、马尔可夫过程、动态规划](/repodemo/collections/drl_task01) | 3天 | 11.16 3:00 |
 | [免模型预测、免模型控制](/repodemo/collections/drl_task02) | 3天 | 11.19 3:00 |
-|深度学习基础 | 2天 | 11.21 3:00 |
+|[深度学习基础](/repodemo/collections/drl_task03) | 2天 | 11.21 3:00 |
 | DQN算法、DQN算法进阶 | 4天 | 11.25 3:00|
 | 策略梯度、Actor-critic算法 | 3天 | 11.28 3:00 |
 | DDPG算法、PPO算法、SAC算法 | 4天 | 12.02 3:00 |
