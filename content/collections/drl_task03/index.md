@@ -62,7 +62,7 @@ plt.show()
 **前向传播**
 
 $$
-x1*w\rightarrow \begin{bmatrix}1 & x^{(1)}\\1 & x^{(2)}\\  & \vdots\\ 1 & x^{(i)}\\ & \vdots\\1 & x^{(60)}\end{bmatrix}\begin{bmatrix}w_{1,0} & w_{2,0} & \cdots & w_{10,0}\\ w_{1,1} & w_{2,1} & \cdots & w_{10,1}\end{bmatrix} \rightarrow  \bigg[\quad \cdot \quad\bigg]_{60\times 10}
+x1*w\rightarrow \begin{bmatrix}1 & x^{(1)}\\\1 & x^{(2)}\\\  & \vdots\\\ 1 & x^{(i)}\\\ & \vdots\\\1 & x^{(60)}\end{bmatrix}\begin{bmatrix}w_{1,0} & w_{2,0} & \cdots & w_{10,0}\\\ w_{1,1} & w_{2,1} & \cdots & w_{10,1}\end{bmatrix} \rightarrow  \bigg[\quad \cdot \quad\bigg]_{60\times 10}
 $$
 
 ```python
@@ -103,16 +103,18 @@ $$
 $$
 
 $$
-\underbrace{\Delta w_{ho}}_{(h+1)\times op} = \underbrace{(\overbrace{\mathbf{h1}}^{m\times (h+1)}.T)}_{(h+1)\times m}\cdot \underbrace{\delta_{out}}_{m\times op}
+\Delta w_{ho} {\tiny \textcolor{purple}{[{(h+1)\times op}]}} = ({\mathbf{h1}}^{m\times (h+1)}.T){\tiny \textcolor{purple}{[{(h+1)\times m}]}}\cdot \delta_{out}{\tiny \textcolor{purple}{[{m\times op}]}}
 $$
 
 $$
-\underbrace{\delta_{hidden}}_{m\times h}=\underbrace{\delta_{out}}_{m\times op}\cdot \underbrace{w_{ho}^{T}}_{op\times h}*\underbrace{\mathbf{h}}_{m\times h}*(1-\mathbf{h})
+\delta_{hidden}{\tiny\textcolor{purple}{[m\times h]}}=\delta_{out}{\tiny\textcolor{purple}{[m\times op]}}\cdot w_{ho}^{T} {\tiny \textcolor{purple}{[op\times h]}} * \mathbf{h} {\tiny\textcolor{purple}{[m\times h]}} * (1-\mathbf{h})
 $$
 
 $$
-\underbrace{\Delta w_{ih}}_{(ip+1)\times h}=\underbrace{(\mathbf{x1}^{T})}_{(ip+1)\times m}\cdot \underbrace{\delta_{hidden}}_{m\times h}
+\Delta w_{ih}{\tiny\textcolor{purple}{[(ip+1)\times h]}}=(\mathbf{x1}^{T}){\tiny\textcolor{purple}{[(ip+1)\times m]}}\cdot \delta_{hidden} {\tiny\textcolor{purple}{[m\times h]}}
 $$
+
+$\textcolor{purple}{紫色}$ 写的是矩阵的形状
 
 $w_{ho}$ 拿掉第一行再转置（作为输出时偏置项不参与）
 
