@@ -28,6 +28,7 @@ categories: Find
           <li><a href="/assets/download/mml-book.pdf">&nbspMath for ML</a></li>
           <li>&nbspLinear algebra and optimization for ML</li>
           <li>&nbsp深度学习花书</li>
+          <li><a href="https://zh.d2l.ai/">动手学深度学习</a></li>
           <li>&nbspMatrix Cookbook</li>
         </ul>
       </li>
