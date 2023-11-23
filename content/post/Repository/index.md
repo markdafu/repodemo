@@ -28,7 +28,7 @@ categories: Find
           <li><a href="/assets/download/mml-book.pdf">&nbspMath for ML</a></li>
           <li>&nbspLinear algebra and optimization for ML</li>
           <li>&nbsp深度学习花书</li>
-          <li><a href="https://zh.d2l.ai/">动手学深度学习</a></li>
+          <li><a href="https://zh.d2l.ai/">&nbsp动手学深度学习</a></li>
           <li>&nbspMatrix Cookbook</li>
         </ul>
       </li>
@@ -57,7 +57,7 @@ categories: Find
         <ul>
           <li><a href="https://www.bilibili.com/video/BV1ha4y1H7sx">&nbspPython爬虫</a></li>
           <li>&nbspPythonic</li>
-          <li><a href="/https://www.devtaoism.com/">&nbspManim</a></li>
+          <li><a href="https://www.devtaoism.com/">&nbspManim</a></li>
         </ul>
       </li>
       <li>&nbspJulia

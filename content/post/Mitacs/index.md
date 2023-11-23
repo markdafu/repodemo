@@ -113,3 +113,9 @@ Your current status does not reflect the quality of your application.
 The Globalink Research Internship program is highly competitive with over 30,000 applications and limited availability; therefore, Mitacs cannot offer direct feedback on your application. All results will be finalized by the end of February 2024.
 
 Please note that Mitacs will make every effort to match eligible candidates with projects, within the scope of Government of Canada guidelines and/or directives on research security. Mitacs reserves the right to decline applications on the grounds of research security concerns or approve applications conditional on additional research security requirements as appropriate.
+
+## 乌龙
+
+![更改邮件](image.png)
+
+原来是 mitacs 那边犯的错误，对外说毕业月份不重要，但把很多填 2025.6 毕业的给筛掉了。
