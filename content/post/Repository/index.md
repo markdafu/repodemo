@@ -16,20 +16,11 @@ categories: Find
   <li>Machine Learning
     <ul>
       <li><a href="http://introtodeeplearning.com/">&nbspMIT 6.S191</a></li>
-      <li><a href="https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/">&nbspGil矩阵论</a></li>
-      <li>&nbsp凸优化
-        <ul>
-          <li><a href="https://www.bilibili.com/video/BV1Pg4y187Ed/?spm_id_from=333.337.search-card.all.click">&nbspStanford公开课</a></li>
-          <li>&nbspConvex optimization -- Boyd</li>
-        </ul>
-      </li>
+      <li><a href="https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/">&nbspGilbert Strang 矩阵论</a></li>
+      <li><a href="https://www.bilibili.com/video/BV1Pg4y187Ed/?spm_id_from=333.337.search-card.all.click">&nbspStanford凸优化</a></li>
       <li>&nbspReadings
         <ul>
-          <li><a href="/assets/download/mml-book.pdf">&nbspMath for ML</a></li>
-          <li>&nbspLinear algebra and optimization for ML</li>
-          <li>&nbsp深度学习花书</li>
           <li><a href="https://zh.d2l.ai/">&nbsp动手学深度学习</a></li>
-          <li>&nbspMatrix Cookbook</li>
         </ul>
       </li>
     </ul>
@@ -60,7 +51,6 @@ categories: Find
     <ul>
       <li><a href="https://www.hello-algo.com/">&nbsphello算法</a></li>
       <li><a href="https://sp18.datastructur.es/">&nbspcs61b</a></li>
-      <li>&nbspAlgorithms(4e) </li>
     </ul>
   </li>
 </ul>
@@ -71,7 +61,6 @@ categories: Find
   <li>Quant
     <ul>
       <li><a href="https://github.com/LechGrzelak/Computational-Finance-Course">&nbspLech Grzelak</a></li>
-      <li>&nbspThomas Sargent - Quant Econ</li>
     </ul>
   </li>
   <br>
