@@ -36,18 +36,6 @@ categories: Find
   </li>
 </ul>
 
-## Data structure and Algorithm
-
-<ul class="terminal-tree">
-  <li>数据结构与算法
-    <ul>
-      <li><a href="https://www.hello-algo.com/">&nbsphello算法</a></li>
-      <li><a href="https://sp18.datastructur.es/">&nbspcs61b</a></li>
-      <li>&nbspAlgorithms(4e) </li>
-    </ul>
-  </li>
-</ul>
-
 ## Programming
 
 <ul class="terminal-tree">
@@ -65,6 +53,13 @@ categories: Find
           <li><a href="https://computationalthinking.mit.edu/Spring21/">&nbspMIT 18.S191</a></li>
         </ul>
       </li>
+    </ul>
+  </li>
+  <li>数据结构与算法
+    <ul>
+      <li><a href="https://www.hello-algo.com/">&nbsphello算法</a></li>
+      <li><a href="https://sp18.datastructur.es/">&nbspcs61b</a></li>
+      <li>&nbspAlgorithms(4e) </li>
     </ul>
   </li>
 </ul>
