@@ -61,6 +61,7 @@ categories: Find
   <li>Quant
     <ul>
       <li><a href="https://github.com/LechGrzelak/Computational-Finance-Course">&nbspLech Grzelak</a></li>
+      <li><a href="https://www.theforage.com/simulations/jpmorgan/quantitative-research-11oc">&nbspJPMorgan Quantitative Research (有证书)</a></li>
     </ul>
   </li>
   <br>
