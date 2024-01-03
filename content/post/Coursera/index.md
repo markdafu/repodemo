@@ -14,13 +14,13 @@ weight: 2
 - [ ] [Introduction to Git and GitHub (Google)](https://www.coursera.org/learn/introduction-git-github)
 - [ ] [Data Mining (Illinois)](https://www.coursera.org/specializations/data-mining)
 - [ ] [Data Structures and Algorithms (UCSD)](https://www.coursera.org/specializations/data-structures-algorithms)
+- [ ] [Deep Neural Networks with PyTorch (IBM)](https://www.coursera.org/learn/deep-neural-networks-with-pytorch)
 
 ## Math
 
 - [ ] [Mathematics for Engineers (港科)](https://www.coursera.org/specializations/mathematics-engineers)
 - [ ] [Introduction to Complex Analysis (Wesleyan)](https://www.coursera.org/learn/complex-analysis)
 - [ ] [离散数学概论 (北大)](https://www.coursera.org/learn/dmathgen)
-- [ ] [Information Theory (港中文)](https://www.coursera.org/learn/information-theory)
 - [ ] [Bayesian Statistics: Techniques and Models (UCSC)](https://www.coursera.org/learn/mcmc-bayesian-statistics)
 - [ ] [Probabilistic Graphical Models (Stanford)](https://www.coursera.org/specializations/probabilistic-graphical-models)
 - [ ] [Discrete Optimization](https://www.coursera.org/learn/discrete-optimization)
@@ -29,6 +29,13 @@ weight: 2
 
 - [ ] [Machine Learning, Visual Recognition and NLP (IBM)](https://www.coursera.org/learn/ibm-ai-workflow-machine-learning-vr-nlp)
 
+## Quant
+
+- [ ] [Pricing Options with Mathematical Models (Caltech)](https://www.coursera.org/learn/pricing-options-with-mathematical-models)
+
 ## Others
 
 - [ ] [Applying to U.S. Universities (Upenn)](https://www.coursera.org/learn/study-in-usa)
+- [ ] [Computers, Waves, Simulations: A Practical Introduction to Numerical Methods using Python](https://www.coursera.org/learn/computers-waves-simulations)
+- [ ] [Digital Signal Processing (EPFL)](https://www.coursera.org/specializations/digital-signal-processing#courses)
+- [ ] [Simulation and modeling of natural processes](https://www.coursera.org/learn/modeling-simulation-natural-processes)
