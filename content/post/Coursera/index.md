@@ -46,6 +46,7 @@ weight: 2
 - [ ] [Computers, Waves, Simulations: A Practical Introduction to Numerical Methods using Python](https://www.coursera.org/learn/computers-waves-simulations)
 - [ ] [Digital Signal Processing (EPFL)](https://www.coursera.org/specializations/digital-signal-processing#courses)
 - [ ] [Simulation and modeling of natural processes](https://www.coursera.org/learn/modeling-simulation-natural-processes)
+- [ ] [Emotional and Social Intelligence](https://www.coursera.org/learn/emotional-and-social-intelligence)
 
 ## Projects
 
