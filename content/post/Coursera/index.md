@@ -3,6 +3,7 @@ title: Coursera
 date: 2023-10-10
 description: Collection of exciting online courses
 tags: 
+image: 240106.jpg
 categories: Find
 weight: 2
 ---
