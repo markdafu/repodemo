@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DeepRL on Diaspora</title><link>https://markdafu.github.io/tags/deeprl/</link><description>Recent content in DeepRL on Diaspora</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://markdafu.github.io/tags/deeprl/index.xml" rel="self" type="application/rss+xml"/><item><title>深度强化学习</title><link>https://markdafu.github.io/p/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</link><pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate><guid>https://markdafu.github.io/p/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</guid><description>&lt;img src="https://markdafu.github.io/p/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/6.png" alt="Featured image of post 深度强化学习" />&lt;h2 id="学习资料">学习资料&lt;/h2>
+&lt;link rel="stylesheet" href="https://markdafu.github.io/scss/custom.scss">
+&lt;ul class="terminal-tree">
+&lt;li>蘑菇书
+&lt;ul>
+&lt;li>&lt;a href="https://johnjim0816.com/joyrl-book/#/">&amp;nbspJoyRL&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://datawhalechina.github.io/easy-rl/">&amp;nbspEasyRL&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://linklearner.com/learn/detail/91">&amp;nbspEasyRL学习手册&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;br>
+&lt;li>组队学习
+&lt;ul>
+&lt;li>&lt;a href="https://mp.weixin.qq.com/s/iPmzb72Yk0mhIA2NYezXDg">&amp;nbsp小程序使用说明&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://mp.weixin.qq.com/s/pwWg0w1DL2C1i_Hs3SZedg">&amp;nbsp学习者手册&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;br>
+&lt;li>Lectures
+&lt;ul>
+&lt;li>&lt;a href="https://rail.eecs.berkeley.edu/deeprlcourse/">&amp;nbspUCB - DRL&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.bilibili.com/video/BV1sd4y167NS/?spm_id_from=333.337.search-card.all.click&amp;vd_source=0747a479964faef65dc22d966c973b66">&amp;nbsp赵世钰（数学推导）&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.bilibili.com/video/BV12o4y197US">&amp;nbsp王树森（速成，要DL基础）&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="进度安排">进度安排&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">内容&lt;/th>
+&lt;th style="text-align:center">天数&lt;/th>
+&lt;th style="text-align:center">截止时间&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">11.13开始&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">&lt;a class="link" href="https://markdafu.github.io/repodemo/collections/drl_task01" >绪论、马尔可夫过程、动态规划&lt;/a>&lt;/td>
+&lt;td style="text-align:center">3天&lt;/td>
+&lt;td style="text-align:center">11.16 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">&lt;a class="link" href="https://markdafu.github.io/repodemo/collections/drl_task02" >免模型预测、免模型控制&lt;/a>&lt;/td>
+&lt;td style="text-align:center">3天&lt;/td>
+&lt;td style="text-align:center">11.19 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">&lt;a class="link" href="https://markdafu.github.io/repodemo/collections/drl_task03" >深度学习基础&lt;/a>&lt;/td>
+&lt;td style="text-align:center">2天&lt;/td>
+&lt;td style="text-align:center">11.21 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">DQN算法、DQN算法进阶&lt;/td>
+&lt;td style="text-align:center">4天&lt;/td>
+&lt;td style="text-align:center">11.25 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">策略梯度、Actor-critic算法&lt;/td>
+&lt;td style="text-align:center">3天&lt;/td>
+&lt;td style="text-align:center">11.28 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">DDPG算法、PPO算法、SAC算法&lt;/td>
+&lt;td style="text-align:center">4天&lt;/td>
+&lt;td style="text-align:center">12.02 3:00&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item></channel></rss>

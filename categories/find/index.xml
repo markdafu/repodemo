@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Find on Diaspora</title><link>https://markdafu.github.io/categories/find/</link><description>Recent content in Find on Diaspora</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 10 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://markdafu.github.io/categories/find/index.xml" rel="self" type="application/rss+xml"/><item><title>Repository</title><link>https://markdafu.github.io/p/repository/</link><pubDate>Fri, 18 Aug 2023 00:00:00 +0000</pubDate><guid>https://markdafu.github.io/p/repository/</guid><description>&lt;img src="https://markdafu.github.io/p/repository/5.png" alt="Featured image of post Repository" />&lt;link rel="stylesheet" href="https://markdafu.github.io/scss/custom.scss">
+&lt;h2 id="machine-learning">Machine learning&lt;/h2>
+&lt;ul class="terminal-tree">
+&lt;li>Machine Learning
+&lt;ul>
+&lt;li>&lt;a href="http://introtodeeplearning.com/">&amp;nbspMIT 6.S191&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/">&amp;nbspGilbert Strang 矩阵论&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.bilibili.com/video/BV1Pg4y187Ed/?spm_id_from=333.337.search-card.all.click">&amp;nbspStanford凸优化&lt;/a>&lt;/li>
+&lt;li>&amp;nbspReadings
+&lt;ul>
+&lt;li>&lt;a href="https://zh.d2l.ai/">&amp;nbsp动手学深度学习&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="programming">Programming&lt;/h2>
+&lt;ul class="terminal-tree">
+&lt;li>Coding
+&lt;ul>
+&lt;li>&amp;nbspPython
+&lt;ul>
+&lt;li>&lt;a href="https://www.bilibili.com/video/BV1ha4y1H7sx">&amp;nbspPython爬虫&lt;/a>&lt;/li>
+&lt;li>&amp;nbspPythonic&lt;/li>
+&lt;li>&lt;a href="https://www.devtaoism.com/">&amp;nbspManim&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&amp;nbspJulia
+&lt;ul>
+&lt;li>&lt;a href="https://computationalthinking.mit.edu/Spring21/">&amp;nbspMIT 18.S191&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;br>
+&lt;li>数据结构与算法
+&lt;ul>
+&lt;li>&lt;a href="https://www.hello-algo.com/">&amp;nbsphello算法&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://sp18.datastructur.es/">&amp;nbspcs61b&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="quantitative-finance">Quantitative Finance&lt;/h2>
+&lt;ul class="terminal-tree">
+&lt;li>Quant
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/LechGrzelak/Computational-Finance-Course">&amp;nbspLech Grzelak&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.theforage.com/simulations/jpmorgan/quantitative-research-11oc">&amp;nbspJPMorgan Quantitative Research (有证书)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;br>
+&lt;li>Fin Engineering
+&lt;ul>
+&lt;li>&lt;a href="https://www.youtube.com/playlist?list=PLM9WI-4yn8BIROK_B1HCsdAlFGvAMdSJr">&amp;nbspOptions - Hull (youtube)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;h2 id="mathematics">Mathematics&lt;/h2>
+&lt;ul class="terminal-tree">
+&lt;li>Basic Math
+&lt;ul>
+&lt;li>&amp;nbsp泛函分析：&lt;a href="https://www.youtube.com/watch?v=yDdxFBcvSGw&amp;list=PLBh2i93oe2qsGKDOsuVVw-OCAfprrnGfr">youtube科普&lt;/a>，&lt;a href="https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/">MIT18.102&lt;/a>&lt;/li>
+&lt;li>&amp;nbsp抽象代数：&lt;a href="https://www.bilibili.com/video/BV1C7411Z7xh?p=1">Maki的算术教室&lt;/a>&lt;/li>
+&lt;li>&amp;nbsp随机过程：&lt;a href="https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/pages/part-iii-random-processes/">中科大网课&lt;/a>&lt;/li>
+&lt;li>&amp;nbsp金融数学：&lt;a href="https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/">MIT18.S096&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Coursera</title><link>https://markdafu.github.io/p/coursera/</link><pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate><guid>https://markdafu.github.io/p/coursera/</guid><description>&lt;img src="https://markdafu.github.io/p/coursera/240106.jpg" alt="Featured image of post Coursera" />&lt;p>我收集了一些关于数学、金融和机器学习的课程，都是有必要学习的内容，而且对我2024fall申请美研有用。每个课程在全部完成后我都将在课名前打上☑️，并写一点评论和小总结，希望对自己和看到这篇blog的朋友有所帮助。&lt;/p>
+&lt;h2 id="programming">Programming&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/data-science-python" target="_blank" rel="noopener"
+>Applied Data Science with Python (UMich)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/cs-fundamentals" target="_blank" rel="noopener"
+>Accelerated Computer Science Fundamentals (Illinois)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/introduction-git-github" target="_blank" rel="noopener"
+>Introduction to Git and GitHub (Google)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/data-mining" target="_blank" rel="noopener"
+>Data Mining (Illinois)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/data-structures-algorithms" target="_blank" rel="noopener"
+>Data Structures and Algorithms (UCSD)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="math">Math&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/mathematics-engineers" target="_blank" rel="noopener"
+>Mathematics for Engineers (港科)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/complex-analysis" target="_blank" rel="noopener"
+>Introduction to Complex Analysis (Wesleyan)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/dmathgen" target="_blank" rel="noopener"
+>离散数学概论 (北大)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/mcmc-bayesian-statistics" target="_blank" rel="noopener"
+>Bayesian Statistics: Techniques and Models (UCSC)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/probabilistic-graphical-models" target="_blank" rel="noopener"
+>Probabilistic Graphical Models (Stanford)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/discrete-optimization" target="_blank" rel="noopener"
+>Discrete Optimization&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/operations-research-modeling" target="_blank" rel="noopener"
+>Operations Research (NTU 3部曲)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="machine-learning">Machine learning&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/ibm-ai-workflow-machine-learning-vr-nlp" target="_blank" rel="noopener"
+>Machine Learning, Visual Recognition and NLP (IBM)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/reinforcement-learning" target="_blank" rel="noopener"
+>Reinforcement Learning&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/deep-neural-networks-with-pytorch" target="_blank" rel="noopener"
+>Deep Neural Networks with PyTorch (IBM)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/machine-learning-trading" target="_blank" rel="noopener"
+>Machine Learning for Trading (试试)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="quant">Quant&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/pricing-options-with-mathematical-models" target="_blank" rel="noopener"
+>Pricing Options with Mathematical Models (Caltech)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/wharton-quantitative-modeling" target="_blank" rel="noopener"
+>Fundamentals of Quantitative Modeling (UPenn)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/financialengineering" target="_blank" rel="noopener"
+>Financial Engineering and Risk Management (Columbia)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="others">Others&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/study-in-usa" target="_blank" rel="noopener"
+>Applying to U.S. Universities (Upenn)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/computers-waves-simulations" target="_blank" rel="noopener"
+>Computers, Waves, Simulations: A Practical Introduction to Numerical Methods using Python&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/digital-signal-processing#courses" target="_blank" rel="noopener"
+>Digital Signal Processing (EPFL)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/modeling-simulation-natural-processes" target="_blank" rel="noopener"
+>Simulation and modeling of natural processes&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/emotional-and-social-intelligence" target="_blank" rel="noopener"
+>Emotional and Social Intelligence&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/narrative-economics#modules" target="_blank" rel="noopener"
+>Narrative Economics&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="projects">Projects&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/projects/googlecloud-reinforcement-learning-qwik-start-yqsij#outcomes" target="_blank" rel="noopener"
+>Reinforcement Learning: Qwik Start&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

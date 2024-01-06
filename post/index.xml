@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Diaspora</title><link>https://markdafu.github.io/post/</link><description>Recent content in Posts on Diaspora</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 11 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://markdafu.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Repository</title><link>https://markdafu.github.io/p/repository/</link><pubDate>Fri, 18 Aug 2023 00:00:00 +0000</pubDate><guid>https://markdafu.github.io/p/repository/</guid><description>&lt;img src="https://markdafu.github.io/p/repository/5.png" alt="Featured image of post Repository" />&lt;link rel="stylesheet" href="https://markdafu.github.io/scss/custom.scss">
+&lt;h2 id="machine-learning">Machine learning&lt;/h2>
+&lt;ul class="terminal-tree">
+&lt;li>Machine Learning
+&lt;ul>
+&lt;li>&lt;a href="http://introtodeeplearning.com/">&amp;nbspMIT 6.S191&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/">&amp;nbspGilbert Strang 矩阵论&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.bilibili.com/video/BV1Pg4y187Ed/?spm_id_from=333.337.search-card.all.click">&amp;nbspStanford凸优化&lt;/a>&lt;/li>
+&lt;li>&amp;nbspReadings
+&lt;ul>
+&lt;li>&lt;a href="https://zh.d2l.ai/">&amp;nbsp动手学深度学习&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="programming">Programming&lt;/h2>
+&lt;ul class="terminal-tree">
+&lt;li>Coding
+&lt;ul>
+&lt;li>&amp;nbspPython
+&lt;ul>
+&lt;li>&lt;a href="https://www.bilibili.com/video/BV1ha4y1H7sx">&amp;nbspPython爬虫&lt;/a>&lt;/li>
+&lt;li>&amp;nbspPythonic&lt;/li>
+&lt;li>&lt;a href="https://www.devtaoism.com/">&amp;nbspManim&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&amp;nbspJulia
+&lt;ul>
+&lt;li>&lt;a href="https://computationalthinking.mit.edu/Spring21/">&amp;nbspMIT 18.S191&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;br>
+&lt;li>数据结构与算法
+&lt;ul>
+&lt;li>&lt;a href="https://www.hello-algo.com/">&amp;nbsphello算法&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://sp18.datastructur.es/">&amp;nbspcs61b&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="quantitative-finance">Quantitative Finance&lt;/h2>
+&lt;ul class="terminal-tree">
+&lt;li>Quant
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/LechGrzelak/Computational-Finance-Course">&amp;nbspLech Grzelak&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.theforage.com/simulations/jpmorgan/quantitative-research-11oc">&amp;nbspJPMorgan Quantitative Research (有证书)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;br>
+&lt;li>Fin Engineering
+&lt;ul>
+&lt;li>&lt;a href="https://www.youtube.com/playlist?list=PLM9WI-4yn8BIROK_B1HCsdAlFGvAMdSJr">&amp;nbspOptions - Hull (youtube)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/ul>
+&lt;h2 id="mathematics">Mathematics&lt;/h2>
+&lt;ul class="terminal-tree">
+&lt;li>Basic Math
+&lt;ul>
+&lt;li>&amp;nbsp泛函分析：&lt;a href="https://www.youtube.com/watch?v=yDdxFBcvSGw&amp;list=PLBh2i93oe2qsGKDOsuVVw-OCAfprrnGfr">youtube科普&lt;/a>，&lt;a href="https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/">MIT18.102&lt;/a>&lt;/li>
+&lt;li>&amp;nbsp抽象代数：&lt;a href="https://www.bilibili.com/video/BV1C7411Z7xh?p=1">Maki的算术教室&lt;/a>&lt;/li>
+&lt;li>&amp;nbsp随机过程：&lt;a href="https://ocw.mit.edu/courses/res-6-012-introduction-to-probability-spring-2018/pages/part-iii-random-processes/">中科大网课&lt;/a>&lt;/li>
+&lt;li>&amp;nbsp金融数学：&lt;a href="https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/">MIT18.S096&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Coursera</title><link>https://markdafu.github.io/p/coursera/</link><pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate><guid>https://markdafu.github.io/p/coursera/</guid><description>&lt;img src="https://markdafu.github.io/p/coursera/240106.jpg" alt="Featured image of post Coursera" />&lt;p>我收集了一些关于数学、金融和机器学习的课程，都是有必要学习的内容，而且对我2024fall申请美研有用。每个课程在全部完成后我都将在课名前打上☑️，并写一点评论和小总结，希望对自己和看到这篇blog的朋友有所帮助。&lt;/p>
+&lt;h2 id="programming">Programming&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/data-science-python" target="_blank" rel="noopener"
+>Applied Data Science with Python (UMich)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/cs-fundamentals" target="_blank" rel="noopener"
+>Accelerated Computer Science Fundamentals (Illinois)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/introduction-git-github" target="_blank" rel="noopener"
+>Introduction to Git and GitHub (Google)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/data-mining" target="_blank" rel="noopener"
+>Data Mining (Illinois)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/data-structures-algorithms" target="_blank" rel="noopener"
+>Data Structures and Algorithms (UCSD)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="math">Math&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/mathematics-engineers" target="_blank" rel="noopener"
+>Mathematics for Engineers (港科)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/complex-analysis" target="_blank" rel="noopener"
+>Introduction to Complex Analysis (Wesleyan)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/dmathgen" target="_blank" rel="noopener"
+>离散数学概论 (北大)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/mcmc-bayesian-statistics" target="_blank" rel="noopener"
+>Bayesian Statistics: Techniques and Models (UCSC)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/probabilistic-graphical-models" target="_blank" rel="noopener"
+>Probabilistic Graphical Models (Stanford)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/discrete-optimization" target="_blank" rel="noopener"
+>Discrete Optimization&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/operations-research-modeling" target="_blank" rel="noopener"
+>Operations Research (NTU 3部曲)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="machine-learning">Machine learning&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/ibm-ai-workflow-machine-learning-vr-nlp" target="_blank" rel="noopener"
+>Machine Learning, Visual Recognition and NLP (IBM)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/reinforcement-learning" target="_blank" rel="noopener"
+>Reinforcement Learning&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/deep-neural-networks-with-pytorch" target="_blank" rel="noopener"
+>Deep Neural Networks with PyTorch (IBM)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/machine-learning-trading" target="_blank" rel="noopener"
+>Machine Learning for Trading (试试)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="quant">Quant&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/pricing-options-with-mathematical-models" target="_blank" rel="noopener"
+>Pricing Options with Mathematical Models (Caltech)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/wharton-quantitative-modeling" target="_blank" rel="noopener"
+>Fundamentals of Quantitative Modeling (UPenn)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/financialengineering" target="_blank" rel="noopener"
+>Financial Engineering and Risk Management (Columbia)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="others">Others&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/study-in-usa" target="_blank" rel="noopener"
+>Applying to U.S. Universities (Upenn)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/computers-waves-simulations" target="_blank" rel="noopener"
+>Computers, Waves, Simulations: A Practical Introduction to Numerical Methods using Python&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/specializations/digital-signal-processing#courses" target="_blank" rel="noopener"
+>Digital Signal Processing (EPFL)&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/modeling-simulation-natural-processes" target="_blank" rel="noopener"
+>Simulation and modeling of natural processes&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/emotional-and-social-intelligence" target="_blank" rel="noopener"
+>Emotional and Social Intelligence&lt;/a>&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/learn/narrative-economics#modules" target="_blank" rel="noopener"
+>Narrative Economics&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="projects">Projects&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.coursera.org/projects/googlecloud-reinforcement-learning-qwik-start-yqsij#outcomes" target="_blank" rel="noopener"
+>Reinforcement Learning: Qwik Start&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>深度强化学习</title><link>https://markdafu.github.io/p/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</link><pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate><guid>https://markdafu.github.io/p/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</guid><description>&lt;img src="https://markdafu.github.io/p/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/6.png" alt="Featured image of post 深度强化学习" />&lt;h2 id="学习资料">学习资料&lt;/h2>
+&lt;link rel="stylesheet" href="https://markdafu.github.io/scss/custom.scss">
+&lt;ul class="terminal-tree">
+&lt;li>蘑菇书
+&lt;ul>
+&lt;li>&lt;a href="https://johnjim0816.com/joyrl-book/#/">&amp;nbspJoyRL&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://datawhalechina.github.io/easy-rl/">&amp;nbspEasyRL&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://linklearner.com/learn/detail/91">&amp;nbspEasyRL学习手册&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;br>
+&lt;li>组队学习
+&lt;ul>
+&lt;li>&lt;a href="https://mp.weixin.qq.com/s/iPmzb72Yk0mhIA2NYezXDg">&amp;nbsp小程序使用说明&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://mp.weixin.qq.com/s/pwWg0w1DL2C1i_Hs3SZedg">&amp;nbsp学习者手册&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;br>
+&lt;li>Lectures
+&lt;ul>
+&lt;li>&lt;a href="https://rail.eecs.berkeley.edu/deeprlcourse/">&amp;nbspUCB - DRL&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.bilibili.com/video/BV1sd4y167NS/?spm_id_from=333.337.search-card.all.click&amp;vd_source=0747a479964faef65dc22d966c973b66">&amp;nbsp赵世钰（数学推导）&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.bilibili.com/video/BV12o4y197US">&amp;nbsp王树森（速成，要DL基础）&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="进度安排">进度安排&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">内容&lt;/th>
+&lt;th style="text-align:center">天数&lt;/th>
+&lt;th style="text-align:center">截止时间&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">11.13开始&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">&lt;a class="link" href="https://markdafu.github.io/repodemo/collections/drl_task01" >绪论、马尔可夫过程、动态规划&lt;/a>&lt;/td>
+&lt;td style="text-align:center">3天&lt;/td>
+&lt;td style="text-align:center">11.16 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">&lt;a class="link" href="https://markdafu.github.io/repodemo/collections/drl_task02" >免模型预测、免模型控制&lt;/a>&lt;/td>
+&lt;td style="text-align:center">3天&lt;/td>
+&lt;td style="text-align:center">11.19 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">&lt;a class="link" href="https://markdafu.github.io/repodemo/collections/drl_task03" >深度学习基础&lt;/a>&lt;/td>
+&lt;td style="text-align:center">2天&lt;/td>
+&lt;td style="text-align:center">11.21 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">DQN算法、DQN算法进阶&lt;/td>
+&lt;td style="text-align:center">4天&lt;/td>
+&lt;td style="text-align:center">11.25 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">策略梯度、Actor-critic算法&lt;/td>
+&lt;td style="text-align:center">3天&lt;/td>
+&lt;td style="text-align:center">11.28 3:00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">DDPG算法、PPO算法、SAC算法&lt;/td>
+&lt;td style="text-align:center">4天&lt;/td>
+&lt;td style="text-align:center">12.02 3:00&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Mitacs申请</title><link>https://markdafu.github.io/p/mitacs%E7%94%B3%E8%AF%B7/</link><pubDate>Thu, 14 Sep 2023 00:00:00 +0000</pubDate><guid>https://markdafu.github.io/p/mitacs%E7%94%B3%E8%AF%B7/</guid><description>&lt;img src="https://markdafu.github.io/p/mitacs%E7%94%B3%E8%AF%B7/cover.jpg" alt="Featured image of post Mitacs申请" />&lt;p>申请途径和网站：2024年加拿大Mitacs本科生實習合作獎學金遴選&lt;a class="link" href="https://www.csc.edu.cn/chuguo/s/2669" target="_blank" rel="noopener"
+>通知&lt;/a>、&lt;a class="link" href="https://www.mitacs.ca/en/programs/globalink/globalink-research-internship" target="_blank" rel="noopener"
+>加方申請portal&lt;/a>、&lt;a class="link" href="http://apply.csc.edu.cn" target="_blank" rel="noopener"
+>國家公派留學信息管理平台&lt;/a>&lt;/p>
+&lt;h2 id="三件事-914">三件事 9.14&lt;/h2>
+&lt;ul>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 打印成績單&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 寫推薦信，找倪簽字&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> 寫三個小作文
+&lt;ul>
+&lt;li>General description of skills, background knowledge, research interests and experience&lt;/li>
+&lt;li>Notable Achievements&lt;/li>
+&lt;li>Briefly describe the research work you have completed&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="選項目-918">選項目 9.18&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Rank&lt;/th>
+&lt;th>Province&lt;/th>
+&lt;th>Professor Name&lt;/th>
+&lt;th>Project Title&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Ontario&lt;/td>
+&lt;td>Justin Wan&lt;/td>
+&lt;td>Computational Finance using Machine Learning Techniques&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>British Columbia&lt;/td>
+&lt;td>Christoph Ortner&lt;/td>
+&lt;td>Mathematics of Scientific Machine Learning&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Ontario&lt;/td>
+&lt;td>Apurva Narayan&lt;/td>
+&lt;td>Quantum Machine Learning&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4&lt;/td>
+&lt;td>Nova Scotia&lt;/td>
+&lt;td>Mohamed Drira&lt;/td>
+&lt;td>Corporate Reporting Analytics: A Machine Learning Approach&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5&lt;/td>
+&lt;td>Ontario&lt;/td>
+&lt;td>Apurva Narayan&lt;/td>
+&lt;td>Empowering Machine Learning using Quantum Computing&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>6&lt;/td>
+&lt;td>British Columbia&lt;/td>
+&lt;td>Xuekui Zhang&lt;/td>
+&lt;td>Statistical methods for big data analysis and its application in medical research&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>7&lt;/td>
+&lt;td>British Columbia&lt;/td>
+&lt;td>Xuekui Zhang&lt;/td>
+&lt;td>Statistical methods and its application in diagnostic of virus infection&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="第一封邮件-930">第一封邮件 9.30&lt;/h2>
+&lt;p>Dear Dafu,&lt;/p>
+&lt;p>Mitacs is no longer accepting 2024 Globalink Research Internship applications.&lt;/p>
+&lt;p>We are now reviewing all applications to determine their eligibility. Applicants will be notified of their eligibility in November.&lt;/p>
+&lt;p>You no longer will be able to modify your information on the platform. Your application PDF will now be available for download when you log in to the GRI Application Platform under the &amp;lsquo;Application&amp;rsquo; tab.&lt;/p>
+&lt;p>Important dates:&lt;/p>
+&lt;p>&lt;strong>November 2023:&lt;/strong>
+Mitacs notifies each applicant of their eligibility and next steps&lt;/p>
+&lt;p>&lt;strong>November 2023 to January 2024:&lt;/strong>
+Mitacs provides professors with a shortlist of student candidates for their project. Applicants may be interviewed by professors at any time of the matching process. Mitacs collects student and professor rankings.&lt;/p>
+&lt;p>&lt;strong>Mid-February 2024:&lt;/strong>
+Selected applicants receive an internship offer by mid-February 2024 and results are finalized&lt;/p>
+&lt;p>Due to the high volume of applicants, Mitacs cannot offer direct feedback on your application. Please be aware that eligibility and interviews do not guarantee an internship offer.&lt;/p>
+&lt;p>注意：&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Due to the high volume of applicants, Mitacs cannot offer direct feedback on your application. Please be aware that eligibility and interviews do not guarantee an internship offer.&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>因此面试通过确实不保证能进项目组，mitacs机制玄学&lt;/p>
+&lt;p>$\Rightarrow$ &lt;a class="link" href="https://shuosc.github.io/fly/posts/20-%CF%80-mitacs_gri/" target="_blank" rel="noopener"
+>一篇关于Mitacs的博客&lt;/a>&lt;/p>
+&lt;h2 id="通过初筛-118">通过初筛 11.8&lt;/h2>
+&lt;p>身边认识的两个同学都没通过mitacs的初筛，11.4 当日被拒了，很直接地说 &lt;code>not eligible&lt;/code>。今年申请人数3w+，项目2k+。我 11.8 收到初筛通过邮件，进入下一阶段：从11月教授开始挑人，下次状态更新要到12月或1月中旬。&lt;/p>
+&lt;p>Dear Dafu Zhu,&lt;/p>
+&lt;p>Thank you for your interest in Mitacs’s Globalink Research Internship (GRI).&lt;/p>
+&lt;blockquote>
+&lt;p>We have completed our review of all GRI applications, and we are glad to inform you that your application is deemed eligible for a 2024 Globalink Research Internship. At this point, please do not contact any professors or book any tickets. This status update does not mean that you are granted a position for the 2024 Globalink Research Internship.&lt;/p>
+&lt;/blockquote>
+&lt;p>This email is only meant to provide information about the different status updates that you may receive during the next phase.&lt;/p>
+&lt;p>During the matching phase, your application may be updated to one of the following statuses:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Waitlisted:
+There’s no action needed from you when you receive this status update. You will receive an email with a status update in mid-December and in mid-January; OR&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Candidate under consideration:
+There’s no action needed from you when you receive this status update.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>i.Please do not contact any professors unless they reach out to you firstYou may or may not be
+called for an interview. Please diligently check your email, including your spam or junk folders for any emails from professors. The format of the professor’s assessment or interview is up to the professor. If you have questions about logistics and our program, please contact &lt;code>helpdesk@mitacs.ca&lt;/code>. Professors will not be able to answer any questions about funding, immigration, and travelling.&lt;/p>
+&lt;p>ii.Your status can change to waitlisted at any point; this is not reflective of the quality of your application.&lt;/p>
+&lt;p>iii.We&amp;rsquo;ll consider your ranking during the matching process. However, your application can be matched with any project on your list, even if it&amp;rsquo;s not your first choice.&lt;/p>
+&lt;p>iv.You will receive an email with a status update in mid-December or in mid-January.&lt;/p>
+&lt;p>Our matching phase is held from November 2023 to February 2024. Your application can be reviewed at different times between those dates, to the different projects you have applied to. Please note whether your status is “Waitlisted” or “Candidate under consideration” this does not reflect the quality of your application. Being “Waitlisted” implies that our team is working to find the best match for your profile.&lt;/p>
+&lt;p>Please note that Mitacs will make every effort to match eligible candidates with projects, within the scope of Government of Canada guidelines and/or directives on research security. Mitacs reserves the right to decline applications on the grounds of research security concerns or approve applications conditional on additional research security requirements as appropriate.&lt;/p>
+&lt;h2 id="waitlist通知-1111">Waitlist通知 11.11&lt;/h2>
+&lt;p>上封邮件说12月和1月中旬开始匹配，这封应该所有人都一样的，先设成 &lt;code>waitlist&lt;/code> 之后再更新。&lt;/p>
+&lt;blockquote>
+&lt;p>Thank you for your interest in Mitacs’s Globalink Research Internship (GRI). We are writing to inform you that your application status has been updated to “Waitlisted”.&lt;/p>
+&lt;/blockquote>
+&lt;p>Please note that no action is currently required.
+Applicants are asked not to contact professors at this time.
+You will receive an email with a new status update in mid-December and in mid-January.
+Your application may or may not be updated to “Candidate Under Consideration”. If your status changes, Mitacs will
+update your status and send you an email notification with further instructions.&lt;/p>
+&lt;p>Your current status does not reflect the quality of your application.
+The Globalink Research Internship program is highly competitive with over 30,000 applications and limited availability; therefore, Mitacs cannot offer direct feedback on your application. All results will be finalized by the end of February 2024.&lt;/p>
+&lt;p>Please note that Mitacs will make every effort to match eligible candidates with projects, within the scope of Government of Canada guidelines and/or directives on research security. Mitacs reserves the right to decline applications on the grounds of research security concerns or approve applications conditional on additional research security requirements as appropriate.&lt;/p>
+&lt;h2 id="乌龙">乌龙&lt;/h2>
+&lt;p>&lt;img src="https://markdafu.github.io/p/mitacs%E7%94%B3%E8%AF%B7/image.png"
+width="2244"
+height="440"
+srcset="https://markdafu.github.io/p/mitacs%E7%94%B3%E8%AF%B7/image_hu9c8ab74b9bf5315e56374382f0c573b2_145069_480x0_resize_box_3.png 480w, https://markdafu.github.io/p/mitacs%E7%94%B3%E8%AF%B7/image_hu9c8ab74b9bf5315e56374382f0c573b2_145069_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="更改邮件"
+class="gallery-image"
+data-flex-grow="510"
+data-flex-basis="1224px"
+>&lt;/p>
+&lt;p>原来是 mitacs 那边犯的错误，对外说毕业月份不重要，但把很多填 2025.6 毕业的给筛掉了。&lt;/p></description></item><item><title>Shortcodes</title><link>https://markdafu.github.io/p/shortcodes/</link><pubDate>Fri, 25 Aug 2023 00:00:00 +0000</pubDate><guid>https://markdafu.github.io/p/shortcodes/</guid><description>&lt;img src="https://markdafu.github.io/p/shortcodes/cover.jpg" alt="Featured image of post Shortcodes" />&lt;p>For more details, check out the &lt;a class="link" href="https://stack.jimmycai.com/writing/shortcodes" target="_blank" rel="noopener"
+>documentation&lt;/a>.&lt;/p>
+&lt;h2 id="bilibili-video">Bilibili video&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe src="https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;bvid=BV1d4411N7zD"
+scrolling="no"
+frameborder="no"
+framespacing="0"
+allowfullscreen="true"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="tencent-video">Tencent video&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe src="https://v.qq.com/txp/iframe/player.html?vid=g0014r3khdw&amp;auto=0"
+scrolling="no"
+frameborder="no"
+framespacing="0"
+allowfullscreen="true"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="youtube-video">YouTube video&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/0qwALOOvUik"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="generic-video-file">Generic video file&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;video
+controls
+src="https://www.w3schools.com/tags/movie.mp4"
+>
+&lt;p>
+Your browser doesn't support HTML5 video. Here is a
+&lt;a href="https://www.w3schools.com/tags/movie.mp4">link to the video&lt;/a> instead.
+&lt;/p>
+&lt;/video>
+&lt;/div>
+&lt;h2 id="gist">Gist&lt;/h2>
+&lt;script src="https://gist.github.com/CaiJimmy/e2751a943de10b2a5b3a8a6c2120cb86.js">&lt;/script>
+&lt;h2 id="gitlab">GitLab&lt;/h2>
+&lt;script
+type="application/javascript"
+src="https://gitlab.com/-/snippets/2589724.js"
+>&lt;/script>
+&lt;h2 id="quote">Quote&lt;/h2>
+&lt;blockquote>
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p>&lt;span class="cite">&lt;span>― &lt;/span>&lt;span>A famous person, &lt;/span>&lt;a href="https://en.wikipedia.org/wiki/Book">&lt;cite>The book they wrote&lt;/cite>&lt;/a>&lt;/span>&lt;/blockquote>
+&lt;hr>
+&lt;blockquote>
+&lt;p>Photo by &lt;a class="link" href="https://unsplash.com/@codioful" target="_blank" rel="noopener"
+>Codioful&lt;/a> on &lt;a class="link" href="https://unsplash.com/photos/WDSN62Qdxuk" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/blockquote></description></item></channel></rss>

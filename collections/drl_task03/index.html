@@ -1,0 +1,546 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="尝试实现一个通过 BP 算法训练的三层感知机算法，分别完成如下任务：
+函数拟合，训练集由 $y=\sin(23x)\quad x\in[0,1]$ 加扰动生成的 60 个点。画出特征函数。 分类 XX_train,yy_train = make_moons(n_samples=200, shuffle=True, noise=0.2, random_state=44) 生成的数据集。并画出分类边界。 任选一个线性模型，跟多层感知机模型比较。 提示：隐含层神经元个数不需要太大，$10\sim 100$ 之间取值即可。
+单隐含层 MLP 输入层（ip）：$1,x_1,x_2,\cdots,x_{ip}$ 隐含层（h）：$1,f_1,\cdots,f_h$ 输出层（op）：$\hat{y}1,\cdots,\hat{y}{op}$ 其中 $ip$ 表示输入层神经元个数（输入向量维数），$op$ 是输出层神经元个数（输出向量维数），$h$ 是隐含层神经元个数。$1$ 乘以偏置项。
+对样本量 $m=1$ ，输出一维数据 $op=1$ 的情况，输入 $[1,x_1,\cdots,x_{ip}]$，中间层传递 $[1,f_1,\cdots,f_h]$ 到输出层，最后输出 $\hat{y}=g(\Theta \cdot \vec{f})$。输入层到隐含层的转化如下，其中 $w_{ij}$ 为连接输入层第 $i$ 个节点和隐含层第 $j$ 个节点的权重（$1$包含在内）
+$$ \underbrace{[1,f_1,\cdots,f_h]}{1\times (h+1)}=f\bigg(\underbrace{[1,x_1,\cdots,x{ip}]}{1\times (ip+1)}\cdot \underbrace{\begin{bmatrix} w{11} &amp;amp; w_{12} &amp;amp; \cdots &amp;amp; w_{1,h+1}\ w_{21} &amp;amp; w_{22} &amp;amp; \cdots &amp;amp; w_{2,h+1}\ \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots\ w_{ip+1,1} &amp;amp; w_{ip+1,2} &amp;amp; \cdots &amp;amp; w_{ip+1,h+1} \end{bmatrix}}_{(ip+1)\times (h+1)}\bigg) $$"><title>task03 - 深度学习基础</title>
+<link rel=canonical href=https://markdafu.github.io/collections/drl_task03/><link rel=stylesheet href=/scss/style.min.aca18fe454c5ea0a109b52860800655e14184bb040f8c3f6c9a477e2d6ac2d74.css><meta property="og:title" content="task03 - 深度学习基础"><meta property="og:description" content="尝试实现一个通过 BP 算法训练的三层感知机算法，分别完成如下任务：
+函数拟合，训练集由 $y=\sin(23x)\quad x\in[0,1]$ 加扰动生成的 60 个点。画出特征函数。 分类 XX_train,yy_train = make_moons(n_samples=200, shuffle=True, noise=0.2, random_state=44) 生成的数据集。并画出分类边界。 任选一个线性模型，跟多层感知机模型比较。 提示：隐含层神经元个数不需要太大，$10\sim 100$ 之间取值即可。
+单隐含层 MLP 输入层（ip）：$1,x_1,x_2,\cdots,x_{ip}$ 隐含层（h）：$1,f_1,\cdots,f_h$ 输出层（op）：$\hat{y}1,\cdots,\hat{y}{op}$ 其中 $ip$ 表示输入层神经元个数（输入向量维数），$op$ 是输出层神经元个数（输出向量维数），$h$ 是隐含层神经元个数。$1$ 乘以偏置项。
+对样本量 $m=1$ ，输出一维数据 $op=1$ 的情况，输入 $[1,x_1,\cdots,x_{ip}]$，中间层传递 $[1,f_1,\cdots,f_h]$ 到输出层，最后输出 $\hat{y}=g(\Theta \cdot \vec{f})$。输入层到隐含层的转化如下，其中 $w_{ij}$ 为连接输入层第 $i$ 个节点和隐含层第 $j$ 个节点的权重（$1$包含在内）
+$$ \underbrace{[1,f_1,\cdots,f_h]}{1\times (h+1)}=f\bigg(\underbrace{[1,x_1,\cdots,x{ip}]}{1\times (ip+1)}\cdot \underbrace{\begin{bmatrix} w{11} &amp;amp; w_{12} &amp;amp; \cdots &amp;amp; w_{1,h+1}\ w_{21} &amp;amp; w_{22} &amp;amp; \cdots &amp;amp; w_{2,h+1}\ \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots\ w_{ip+1,1} &amp;amp; w_{ip+1,2} &amp;amp; \cdots &amp;amp; w_{ip+1,h+1} \end{bmatrix}}_{(ip+1)\times (h+1)}\bigg) $$"><meta property="og:url" content="https://markdafu.github.io/collections/drl_task03/"><meta property="og:site_name" content="Diaspora"><meta property="og:type" content="article"><meta property="article:section" content="Collections"><meta property="article:published_time" content="2023-11-21T00:00:00+00:00"><meta property="article:modified_time" content="2023-11-21T00:00:00+00:00"><meta name=twitter:title content="task03 - 深度学习基础"><meta name=twitter:description content="尝试实现一个通过 BP 算法训练的三层感知机算法，分别完成如下任务：
+函数拟合，训练集由 $y=\sin(23x)\quad x\in[0,1]$ 加扰动生成的 60 个点。画出特征函数。 分类 XX_train,yy_train = make_moons(n_samples=200, shuffle=True, noise=0.2, random_state=44) 生成的数据集。并画出分类边界。 任选一个线性模型，跟多层感知机模型比较。 提示：隐含层神经元个数不需要太大，$10\sim 100$ 之间取值即可。
+单隐含层 MLP 输入层（ip）：$1,x_1,x_2,\cdots,x_{ip}$ 隐含层（h）：$1,f_1,\cdots,f_h$ 输出层（op）：$\hat{y}1,\cdots,\hat{y}{op}$ 其中 $ip$ 表示输入层神经元个数（输入向量维数），$op$ 是输出层神经元个数（输出向量维数），$h$ 是隐含层神经元个数。$1$ 乘以偏置项。
+对样本量 $m=1$ ，输出一维数据 $op=1$ 的情况，输入 $[1,x_1,\cdots,x_{ip}]$，中间层传递 $[1,f_1,\cdots,f_h]$ 到输出层，最后输出 $\hat{y}=g(\Theta \cdot \vec{f})$。输入层到隐含层的转化如下，其中 $w_{ij}$ 为连接输入层第 $i$ 个节点和隐含层第 $j$ 个节点的权重（$1$包含在内）
+$$ \underbrace{[1,f_1,\cdots,f_h]}{1\times (h+1)}=f\bigg(\underbrace{[1,x_1,\cdots,x{ip}]}{1\times (ip+1)}\cdot \underbrace{\begin{bmatrix} w{11} &amp;amp; w_{12} &amp;amp; \cdots &amp;amp; w_{1,h+1}\ w_{21} &amp;amp; w_{22} &amp;amp; \cdots &amp;amp; w_{2,h+1}\ \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots\ w_{ip+1,1} &amp;amp; w_{ip+1,2} &amp;amp; \cdots &amp;amp; w_{ip+1,h+1} \end{bmatrix}}_{(ip+1)\times (h+1)}\bigg) $$"><link rel="shortcut icon" href=favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu2991a6378885d4c497029adaf7f4f579_278431_300x0_resize_box_3.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🔮</span></figure><div class=site-meta><h1 class=site-name><a href=/>Diaspora</a></h1><h2 class=site-description>Quid Tum?</h2></div></header><ol class=social-menu><li><a href=https://github.com/markdafu/repodemo target=_blank title=GitHub rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://twitter.com target=_blank title=Twitter rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84.0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>Home</span></a></li><li><a href=/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>Archives</span></a></li><li><a href=/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>Search</span></a></li><li><a href=/links/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg><span>Links</span></a></li><div class=menu-bottom-section><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>Dark Mode</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#单隐含层-mlp>单隐含层 MLP</a></li><li><a href=#函数拟合>函数拟合</a></li><li><a href=#二分类>二分类</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><div class=article-title-wrapper><h2 class=article-title><a href=/collections/drl_task03/>task03 - 深度学习基础</a></h2></div><footer class=article-time><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg><time class=article-time--published>Nov 21, 2023</time></div><div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--reading>6 minute read</time></div></footer></div></header><section class=article-content><p>尝试实现一个通过 BP 算法训练的三层感知机算法，分别完成如下任务：</p><ul><li>函数拟合，训练集由 $y=\sin(23x)\quad x\in[0,1]$ 加扰动生成的 60 个点。画出特征函数。</li><li>分类 <code>XX_train,yy_train = make_moons(n_samples=200, shuffle=True, noise=0.2, random_state=44)</code> 生成的数据集。并画出分类边界。</li><li>任选一个线性模型，跟多层感知机模型比较。</li></ul><p><strong>提示</strong>：隐含层神经元个数不需要太大，$10\sim 100$ 之间取值即可。</p><h2 id=单隐含层-mlp>单隐含层 MLP</h2><p><img src=/collections/drl_task03/image.png width=2282 height=940 srcset="/collections/drl_task03/image_hu3dcc5ac1204641a70bf4b7fb1d299d17_444202_480x0_resize_box_3.png 480w, /collections/drl_task03/image_hu3dcc5ac1204641a70bf4b7fb1d299d17_444202_1024x0_resize_box_3.png 1024w" loading=lazy alt=单隐含层的多层感知机 class=gallery-image data-flex-grow=242 data-flex-basis=582px></p><ul><li>输入层（ip）：$1,x_1,x_2,\cdots,x_{ip}$</li><li>隐含层（h）：$1,f_1,\cdots,f_h$</li><li>输出层（op）：$\hat{y}<em>1,\cdots,\hat{y}</em>{op}$</li></ul><p>其中 $ip$ 表示输入层神经元个数（输入向量维数），$op$ 是输出层神经元个数（输出向量维数），$h$ 是隐含层神经元个数。$1$ 乘以偏置项。</p><p>对样本量 $m=1$ ，输出一维数据 $op=1$ 的情况，输入 $[1,x_1,\cdots,x_{ip}]$，中间层传递 $[1,f_1,\cdots,f_h]$ 到输出层，最后输出 $\hat{y}=g(\Theta \cdot \vec{f})$。输入层到隐含层的转化如下，其中 $w_{ij}$ 为连接输入层第 $i$ 个节点和隐含层第 $j$ 个节点的权重（$1$包含在内）</p><p>$$
+\underbrace{[1,f_1,\cdots,f_h]}<em>{1\times (h+1)}=f\bigg(\underbrace{[1,x_1,\cdots,x</em>{ip}]}<em>{1\times (ip+1)}\cdot \underbrace{\begin{bmatrix}
+w</em>{11} & w_{12} & \cdots & w_{1,h+1}\
+w_{21} & w_{22} & \cdots & w_{2,h+1}\
+\vdots & \vdots & \ddots & \vdots\
+w_{ip+1,1} & w_{ip+1,2} & \cdots & w_{ip+1,h+1}
+\end{bmatrix}}_{(ip+1)\times (h+1)}\bigg)
+$$</p><h2 id=函数拟合>函数拟合</h2><p>训练集由 $y=\sin(23x)\quad x\in[0,1]$ 加扰动生成的 60 个点。画出特征函数。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>matplotlib.pyplot</span> <span class=k>as</span> <span class=nn>plt</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>seed</span><span class=p>(</span><span class=mi>42</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x_train</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>sort</span><span class=p>(</span><span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>rand</span><span class=p>(</span><span class=mi>60</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> <span class=n>axis</span><span class=o>=</span><span class=mi>0</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>y_train</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>sin</span><span class=p>(</span><span class=mi>23</span> <span class=o>*</span> <span class=n>x_train</span><span class=p>)</span> <span class=o>+</span> <span class=mf>0.1</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>randn</span><span class=p>(</span><span class=mi>60</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>scatter</span><span class=p>(</span><span class=n>x_train</span><span class=p>,</span> <span class=n>y_train</span><span class=p>,</span> <span class=n>marker</span><span class=o>=</span><span class=s1>&#39;x&#39;</span><span class=p>,</span> <span class=n>color</span><span class=o>=</span><span class=s2>&#34;black&#34;</span><span class=p>,</span> <span class=n>label</span><span class=o>=</span><span class=s2>&#34;Generated Data&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>plot</span><span class=p>(</span><span class=n>np</span><span class=o>.</span><span class=n>linspace</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>1000</span><span class=p>),</span> <span class=n>np</span><span class=o>.</span><span class=n>sin</span><span class=p>(</span><span class=mi>23</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>linspace</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>1000</span><span class=p>)),</span> <span class=s1>&#39;r-&#39;</span><span class=p>,</span> <span class=n>label</span><span class=o>=</span><span class=s2>&#34;y=sin(23x)&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>xlabel</span><span class=p>(</span><span class=s2>&#34;x&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>ylabel</span><span class=p>(</span><span class=s2>&#34;y&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>title</span><span class=p>(</span><span class=s2>&#34;Generated data with noise&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>legend</span><span class=p>(</span><span class=n>loc</span><span class=o>=</span><span class=s1>&#39;lower right&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>show</span><span class=p>()</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=/collections/drl_task03/image-1.png width=579 height=453 srcset="/collections/drl_task03/image-1_hu78c8e5b6eee6842faf2949ddb6611f64_42464_480x0_resize_box_3.png 480w, /collections/drl_task03/image-1_hu78c8e5b6eee6842faf2949ddb6611f64_42464_1024x0_resize_box_3.png 1024w" loading=lazy alt=随机生成的玩具数据集 class=gallery-image data-flex-grow=127 data-flex-basis=306px></p><p>训练集是用 <code>numpy</code> 生成的 $(x,y)$，$x$ 作为一维输入，输出同样是一维的 $\hat{y}$。</p><p><img src=/collections/drl_task03/image-2.png width=1946 height=1000 srcset="/collections/drl_task03/image-2_hua54e4c0768eb1965dd059d5f3450fa44_319217_480x0_resize_box_3.png 480w, /collections/drl_task03/image-2_hua54e4c0768eb1965dd059d5f3450fa44_319217_1024x0_resize_box_3.png 1024w" loading=lazy alt=一维输入的MLP class=gallery-image data-flex-grow=194 data-flex-basis=467px></p><p><strong>前向传播</strong></p><p>$$
+x1*w\rightarrow \begin{bmatrix}1 & x^{(1)}\\1 & x^{(2)}\\ & \vdots\\ 1 & x^{(i)}\\ & \vdots\\1 & x^{(60)}\end{bmatrix}\begin{bmatrix}w_{1,0} & w_{2,0} & \cdots & w_{10,0}\\ w_{1,1} & w_{2,1} & \cdots & w_{10,1}\end{bmatrix} \rightarrow \bigg[\quad \cdot \quad\bigg]_{60\times 10}
+$$</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># 插入偏置项</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>with_ones</span><span class=p>(</span><span class=n>array</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>array_with_ones</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>insert</span><span class=p>(</span><span class=n>array</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=n>axis</span><span class=o>=</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>array_with_ones</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 激活函数</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>sigmoid</span><span class=p>(</span><span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>1</span> <span class=o>/</span> <span class=p>(</span><span class=mi>1</span> <span class=o>+</span> <span class=n>np</span><span class=o>.</span><span class=n>exp</span><span class=p>(</span><span class=n>x</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>sigmoid_dev</span><span class=p>(</span><span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>x</span> <span class=o>*</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>x</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>ip</span> <span class=o>=</span> <span class=mi>1</span>  <span class=c1># 输入维数</span>
+</span></span><span class=line><span class=cl><span class=n>h</span> <span class=o>=</span> <span class=mi>10</span>  <span class=c1># 隐含层神经元数</span>
+</span></span><span class=line><span class=cl><span class=n>op</span> <span class=o>=</span> <span class=mi>1</span>  <span class=c1># 输出维数</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 初始化权重和偏置</span>
+</span></span><span class=line><span class=cl><span class=n>weights_ih</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>rand</span><span class=p>(</span><span class=n>ip</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span><span class=n>h</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>weights_ho</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>rand</span><span class=p>(</span><span class=n>h</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span><span class=n>op</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x1_train</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>x_train</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>hidden_input</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>x1_train</span><span class=p>,</span><span class=n>weights_ih</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>hidden_output</span> <span class=o>=</span> <span class=n>sigmoid</span><span class=p>(</span><span class=n>hidden_input</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>hidden_output_with_ones</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>hidden_output</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>total_output</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>hidden_output_with_ones</span><span class=p>,</span><span class=n>weights_ho</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>y_pred</span> <span class=o>=</span> <span class=n>total_output</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>Back Propagation</strong></p><p>$$
+\delta_{out}=\hat{y}-y \quad [m\times op]
+$$</p><p>$$
+\Delta w_{ho} {\tiny \textcolor{purple}{[{(h+1)\times op}]}} = ({\mathbf{h1}}^{m\times (h+1)}.T){\tiny \textcolor{purple}{[{(h+1)\times m}]}}\cdot \delta_{out}{\tiny \textcolor{purple}{[{m\times op}]}}
+$$</p><p>$$
+\delta_{hidden}{\tiny\textcolor{purple}{[m\times h]}}=\delta_{out}{\tiny\textcolor{purple}{[m\times op]}}\cdot w_{ho}^{T} {\tiny \textcolor{purple}{[op\times h]}} * \mathbf{h} {\tiny\textcolor{purple}{[m\times h]}} * (1-\mathbf{h})
+$$</p><p>$$
+\Delta w_{ih}{\tiny\textcolor{purple}{[(ip+1)\times h]}}=(\mathbf{x1}^{T}){\tiny\textcolor{purple}{[(ip+1)\times m]}}\cdot \delta_{hidden} {\tiny\textcolor{purple}{[m\times h]}}
+$$</p><p>$\textcolor{purple}{紫色}$ 写的是矩阵的形状</p><p>$w_{ho}$ 拿掉第一行再转置（作为输出时偏置项不参与）</p><p>梯度下降：</p><p>$$
+w_{ih} = w_{ih} - \frac{\alpha}{m} \cdot \Delta w_{ih}
+$$</p><p>$$
+w_{ho} = w_{ho} - \frac{\alpha}{m} \cdot \Delta w_{ho}
+$$</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>loss</span> <span class=o>=</span> <span class=mf>0.5</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>mean</span><span class=p>((</span><span class=n>y_pred</span> <span class=o>-</span> <span class=n>y_train</span><span class=p>)</span><span class=o>**</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>alpha</span> <span class=o>=</span> <span class=mf>0.01</span>
+</span></span><span class=line><span class=cl><span class=n>m</span> <span class=o>=</span> <span class=mi>60</span>  <span class=c1># 样本量</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># output layer delta</span>
+</span></span><span class=line><span class=cl><span class=n>delta_out</span> <span class=o>=</span> <span class=n>y_pred</span> <span class=o>-</span> <span class=n>y_train</span>
+</span></span><span class=line><span class=cl><span class=n>d_weights_ho</span> <span class=o>=</span> <span class=n>hidden_output_with_ones</span><span class=o>.</span><span class=n>T</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>delta_out</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># hidden layer delta</span>
+</span></span><span class=line><span class=cl><span class=n>delta_hidden</span> <span class=o>=</span> <span class=n>delta_out</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>weights_ho</span><span class=p>[</span><span class=mi>1</span><span class=p>:]</span><span class=o>.</span><span class=n>T</span><span class=p>)</span> <span class=o>*</span> <span class=n>hidden_output</span> <span class=o>*</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>hidden_output</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>d_weights_ih</span> <span class=o>=</span> <span class=n>x_train</span><span class=o>.</span><span class=n>T</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>delta_hidden</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 更新权重</span>
+</span></span><span class=line><span class=cl><span class=n>weights_ih</span> <span class=o>-=</span> <span class=n>alpha</span> <span class=o>/</span> <span class=n>m</span> <span class=o>*</span> <span class=n>d_weights_ih</span>
+</span></span><span class=line><span class=cl><span class=n>weights_ho</span> <span class=o>-=</span> <span class=n>alpha</span> <span class=o>/</span> <span class=n>m</span> <span class=o>*</span> <span class=n>d_weights_ho</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>整理前向传播、反向传播</strong></p><p>从头开始，初始化权重和训练集，迭代训练</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>ip</span> <span class=o>=</span> <span class=mi>1</span>  <span class=c1># 输入维数</span>
+</span></span><span class=line><span class=cl><span class=n>h</span> <span class=o>=</span> <span class=mi>10</span>  <span class=c1># 隐含层神经元数</span>
+</span></span><span class=line><span class=cl><span class=n>op</span> <span class=o>=</span> <span class=mi>1</span>  <span class=c1># 输出维数</span>
+</span></span><span class=line><span class=cl><span class=n>epochs</span> <span class=o>=</span> <span class=mi>1000000</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 初始化权重和偏置</span>
+</span></span><span class=line><span class=cl><span class=n>weights_ih</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>rand</span><span class=p>(</span><span class=n>ip</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span><span class=n>h</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>weights_ho</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>rand</span><span class=p>(</span><span class=n>h</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span><span class=n>op</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x1_train</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>x_train</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 初始化测试集</span>
+</span></span><span class=line><span class=cl><span class=n>x_test</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>sort</span><span class=p>(</span><span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>rand</span><span class=p>(</span><span class=mi>60</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> <span class=n>axis</span><span class=o>=</span><span class=mi>0</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>y_test</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>sin</span><span class=p>(</span><span class=mi>23</span> <span class=o>*</span> <span class=n>x_test</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x1_test</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>x_test</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 记录loss</span>
+</span></span><span class=line><span class=cl><span class=n>loss_train</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>zeros</span><span class=p>(</span><span class=n>epochs</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>loss_test</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>zeros</span><span class=p>(</span><span class=n>epochs</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 迭代</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>epoch</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>epochs</span><span class=p>):</span>    
+</span></span><span class=line><span class=cl>    <span class=c1># 前向传播 (训练+测试)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_input</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>x1_train</span><span class=p>,</span><span class=n>weights_ih</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_output</span> <span class=o>=</span> <span class=n>sigmoid</span><span class=p>(</span><span class=n>hidden_input</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_output_with_ones</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>hidden_output</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>total_output</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>hidden_output_with_ones</span><span class=p>,</span><span class=n>weights_ho</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>y_pred</span> <span class=o>=</span> <span class=n>total_output</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=n>hidden_input_test</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>x1_test</span><span class=p>,</span><span class=n>weights_ih</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_output_test</span> <span class=o>=</span> <span class=n>sigmoid</span><span class=p>(</span><span class=n>hidden_input_test</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_output_with_ones_test</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>hidden_output_test</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>total_output_test</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>hidden_output_with_ones_test</span><span class=p>,</span><span class=n>weights_ho</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>y_pred_test</span> <span class=o>=</span> <span class=n>total_output_test</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 反向传播</span>
+</span></span><span class=line><span class=cl>    <span class=n>loss_train</span><span class=p>[</span><span class=n>epoch</span><span class=p>]</span> <span class=o>=</span> <span class=mf>0.5</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>mean</span><span class=p>((</span><span class=n>y_pred</span> <span class=o>-</span> <span class=n>y_train</span><span class=p>)</span><span class=o>**</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>loss_test</span><span class=p>[</span><span class=n>epoch</span><span class=p>]</span> <span class=o>=</span> <span class=mf>0.5</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>mean</span><span class=p>((</span><span class=n>y_pred_test</span> <span class=o>-</span> <span class=n>y_test</span><span class=p>)</span><span class=o>**</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># output layer delta</span>
+</span></span><span class=line><span class=cl>    <span class=n>delta_out</span> <span class=o>=</span> <span class=n>y_pred</span> <span class=o>-</span> <span class=n>y_train</span>
+</span></span><span class=line><span class=cl>    <span class=n>d_weights_ho</span> <span class=o>=</span> <span class=n>hidden_output_with_ones</span><span class=o>.</span><span class=n>T</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>delta_out</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># hidden layer delta</span>
+</span></span><span class=line><span class=cl>    <span class=n>delta_hidden</span> <span class=o>=</span> <span class=n>delta_out</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>weights_ho</span><span class=p>[</span><span class=mi>1</span><span class=p>:]</span><span class=o>.</span><span class=n>T</span><span class=p>)</span> <span class=o>*</span> <span class=n>hidden_output</span> <span class=o>*</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>hidden_output</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>d_weights_ih</span> <span class=o>=</span> <span class=n>x1_train</span><span class=o>.</span><span class=n>T</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>delta_hidden</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 更新权重</span>
+</span></span><span class=line><span class=cl>    <span class=n>alpha</span> <span class=o>=</span> <span class=mf>0.2</span>
+</span></span><span class=line><span class=cl>    <span class=n>m</span> <span class=o>=</span> <span class=mi>60</span>  <span class=c1># 样本量</span>
+</span></span><span class=line><span class=cl>    <span class=n>weights_ih</span> <span class=o>-=</span> <span class=n>alpha</span> <span class=o>/</span> <span class=n>m</span> <span class=o>*</span> <span class=n>d_weights_ih</span>
+</span></span><span class=line><span class=cl>    <span class=n>weights_ho</span> <span class=o>-=</span> <span class=n>alpha</span> <span class=o>/</span> <span class=n>m</span> <span class=o>*</span> <span class=n>d_weights_ho</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 每1000次输出一次损失</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>epoch</span> <span class=o>%</span> <span class=mi>1000</span> <span class=o>==</span> <span class=mi>0</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s1>&#39;Epoch </span><span class=si>{</span><span class=n>epoch</span><span class=si>}</span><span class=s1>, Loss: </span><span class=si>{</span><span class=n>loss_train</span><span class=p>[</span><span class=n>epoch</span><span class=p>]</span><span class=si>}</span><span class=s1>&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Training set loss value: </span><span class=si>{</span><span class=n>loss_train</span><span class=p>[</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=si>:</span><span class=s2>.3f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Testing set loss value: </span><span class=si>{</span><span class=n>loss_test</span><span class=p>[</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=si>:</span><span class=s2>.3f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 输出：</span>
+</span></span><span class=line><span class=cl><span class=c1># Training set loss value: 0.003</span>
+</span></span><span class=line><span class=cl><span class=c1># Testing set loss value: 0.001</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>figure</span><span class=p>(</span><span class=n>figsize</span><span class=o>=</span><span class=p>(</span><span class=mi>16</span><span class=p>,</span><span class=mi>8</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>subplot</span><span class=p>(</span><span class=mi>121</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>loglog</span><span class=p>(</span><span class=n>loss_train</span><span class=p>,</span><span class=n>label</span><span class=o>=</span><span class=s1>&#39;Train&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>loglog</span><span class=p>(</span><span class=n>loss_test</span><span class=p>,</span><span class=n>label</span><span class=o>=</span><span class=s1>&#39;Test&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>title</span><span class=p>(</span><span class=s2>&#34;Loss function&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>grid</span><span class=p>(</span><span class=kc>True</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>xlabel</span><span class=p>(</span><span class=s1>&#39;epochs&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>ylabel</span><span class=p>(</span><span class=s1>&#39;loss&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>legend</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 绘制拟合结果</span>
+</span></span><span class=line><span class=cl><span class=n>x_fit</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>linspace</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>100</span><span class=p>)</span><span class=o>.</span><span class=n>reshape</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x1_fit</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>x_fit</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>fit_output</span> <span class=o>=</span> <span class=n>feedforward</span><span class=p>(</span><span class=n>x1_fit</span><span class=p>,</span><span class=n>weights_ih</span><span class=p>,</span><span class=n>weights_ho</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>subplot</span><span class=p>(</span><span class=mi>122</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>title</span><span class=p>(</span><span class=s2>&#34;Fitting&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>plot</span><span class=p>(</span><span class=n>x_train</span><span class=p>,</span><span class=n>y_train</span><span class=p>,</span><span class=s1>&#39;k--o&#39;</span><span class=p>,</span><span class=n>label</span><span class=o>=</span><span class=s1>&#39;Training data&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>plot</span><span class=p>(</span><span class=n>x_fit</span><span class=p>,</span><span class=n>fit_output</span><span class=p>,</span><span class=s2>&#34;r-&#34;</span><span class=p>,</span><span class=n>label</span><span class=o>=</span><span class=s1>&#39;Fitted function&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>plot</span><span class=p>(</span><span class=n>np</span><span class=o>.</span><span class=n>linspace</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>1000</span><span class=p>),</span> <span class=n>np</span><span class=o>.</span><span class=n>sin</span><span class=p>(</span><span class=mi>23</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>linspace</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>1000</span><span class=p>)),</span> <span class=s1>&#39;b-&#39;</span><span class=p>,</span> <span class=n>label</span><span class=o>=</span><span class=s2>&#34;y=sin(23x)&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>xlabel</span><span class=p>(</span><span class=s1>&#39;x&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>ylabel</span><span class=p>(</span><span class=s1>&#39;y&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>legend</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>grid</span><span class=p>(</span><span class=kc>True</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=/collections/drl_task03/image-3.png width=1322 height=704 srcset="/collections/drl_task03/image-3_hu70a490aad99a29cc12d20e6183038bd8_110047_480x0_resize_box_3.png 480w, /collections/drl_task03/image-3_hu70a490aad99a29cc12d20e6183038bd8_110047_1024x0_resize_box_3.png 1024w" loading=lazy alt=函数拟合结果 class=gallery-image data-flex-grow=187 data-flex-basis=450px></p><p><strong>实验记录</strong></p><ol><li>最初设置 <code>epochs=100000</code> 但迭代 1000 次后损失停在 0.25 左右的平台，降不下去</li><li>接着试了两百万次，loss 降到 0.18，但仍未收敛</li><li>继续试四百万次，降到 0.08，仍未收敛</li><li>最后尝试了八百万次，降到 0.037，但实际上还是没收敛。考虑到可能学习率取 0.01 太小</li><li>把学习率调到 0.1 时，迭代两百万次，很快降到 0.03，可见深度学习里学习率太小的问题</li><li>把学习率调到 0.2 时，迭代一百万次，降到 0.0034</li></ol><h2 id=二分类>二分类</h2><p>分类 <code>XX_train,yy_train = make_moons(n_samples=200, shuffle=True, noise=0.2, random_state=44)</code> 生成的数据集。并画出分类边界。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>sklearn.datasets</span> <span class=kn>import</span> <span class=n>make_moons</span>
+</span></span><span class=line><span class=cl><span class=n>XX_train</span><span class=p>,</span><span class=n>yy_train</span> <span class=o>=</span> <span class=n>make_moons</span><span class=p>(</span><span class=n>n_samples</span><span class=o>=</span><span class=mi>200</span><span class=p>,</span> <span class=n>shuffle</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span> <span class=n>noise</span><span class=o>=</span><span class=mf>0.2</span><span class=p>,</span> <span class=n>random_state</span><span class=o>=</span><span class=mi>44</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>plot</span><span class=p>(</span><span class=n>XX_train</span><span class=p>[</span><span class=n>np</span><span class=o>.</span><span class=n>where</span><span class=p>(</span><span class=n>yy_train</span><span class=o>==</span><span class=mi>1</span><span class=p>),</span> <span class=mi>0</span><span class=p>],</span> <span class=n>XX_train</span><span class=p>[(</span><span class=n>np</span><span class=o>.</span><span class=n>where</span><span class=p>(</span><span class=n>yy_train</span><span class=o>==</span><span class=mi>1</span><span class=p>)),</span> <span class=mi>1</span><span class=p>],</span> <span class=s1>&#39;ro&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>plot</span><span class=p>(</span><span class=n>XX_train</span><span class=p>[</span><span class=n>np</span><span class=o>.</span><span class=n>where</span><span class=p>(</span><span class=n>yy_train</span><span class=o>==</span><span class=mi>0</span><span class=p>),</span> <span class=mi>0</span><span class=p>],</span> <span class=n>XX_train</span><span class=p>[(</span><span class=n>np</span><span class=o>.</span><span class=n>where</span><span class=p>(</span><span class=n>yy_train</span><span class=o>==</span><span class=mi>0</span><span class=p>)),</span> <span class=mi>1</span><span class=p>],</span> <span class=s1>&#39;bo&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>xlabel</span><span class=p>(</span><span class=sa>r</span><span class=s2>&#34;$x_1$&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>ylabel</span><span class=p>(</span><span class=sa>r</span><span class=s2>&#34;$x_2$&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>title</span><span class=p>(</span><span class=s2>&#34;Data Set&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>grid</span><span class=p>(</span><span class=kc>True</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=/collections/drl_task03/image-4.png width=585 height=453 srcset="/collections/drl_task03/image-4_hue190e38390effcf5d744e5571de781af_33097_480x0_resize_box_3.png 480w, /collections/drl_task03/image-4_hue190e38390effcf5d744e5571de781af_33097_1024x0_resize_box_3.png 1024w" loading=lazy alt=make_moons数据集 class=gallery-image data-flex-grow=129 data-flex-basis=309px></p><p><img src=/collections/drl_task03/image-5.png width=2148 height=824 srcset="/collections/drl_task03/image-5_hue9216e2e2df80c732fa2caf2cc8ee511_333786_480x0_resize_box_3.png 480w, /collections/drl_task03/image-5_hue9216e2e2df80c732fa2caf2cc8ee511_333786_1024x0_resize_box_3.png 1024w" loading=lazy alt=二维输入的MLP class=gallery-image data-flex-grow=260 data-flex-basis=625px></p><p>输入二维数据，调试神经网络。注意新的损失函数为交叉熵（第一次算没有换损失，输出的loss都是<code>nan</code>）</p><p>$$
+H(p,q)=-\sum_i (p_i\cdot \log(q_i))
+$$</p><p>对于二分类问题，可简化为</p><p>$$
+H(p,q) = -[p\cdot \log(q)+(1-p)\cdot \log(1-q)]
+$$</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>ip</span> <span class=o>=</span> <span class=mi>2</span>  <span class=c1># 输入维数</span>
+</span></span><span class=line><span class=cl><span class=n>h</span> <span class=o>=</span> <span class=mi>10</span>  <span class=c1># 隐含层神经元数</span>
+</span></span><span class=line><span class=cl><span class=n>op</span> <span class=o>=</span> <span class=mi>1</span>  <span class=c1># 输出维数</span>
+</span></span><span class=line><span class=cl><span class=n>epochs</span> <span class=o>=</span> <span class=mi>200000</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 初始化权重和偏置</span>
+</span></span><span class=line><span class=cl><span class=n>weights_ih</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>rand</span><span class=p>(</span><span class=n>ip</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span><span class=n>h</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>weights_ho</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>rand</span><span class=p>(</span><span class=n>h</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span><span class=n>op</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>XX1_train</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>XX_train</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 初始化数据集</span>
+</span></span><span class=line><span class=cl><span class=n>XX_train</span><span class=p>,</span><span class=n>yy_train</span> <span class=o>=</span> <span class=n>make_moons</span><span class=p>(</span><span class=n>n_samples</span><span class=o>=</span><span class=mi>200</span><span class=p>,</span> <span class=n>shuffle</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span> <span class=n>noise</span><span class=o>=</span><span class=mf>0.2</span><span class=p>,</span> <span class=n>random_state</span><span class=o>=</span><span class=mi>44</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>XX_test</span><span class=p>,</span><span class=n>yy_test</span> <span class=o>=</span> <span class=n>make_moons</span><span class=p>(</span><span class=n>n_samples</span><span class=o>=</span><span class=mi>200</span><span class=p>,</span> <span class=n>shuffle</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span> <span class=n>noise</span><span class=o>=</span><span class=mf>0.2</span><span class=p>,</span> <span class=n>random_state</span><span class=o>=</span><span class=mi>42</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>XX1_test</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>XX_test</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>yy_train</span> <span class=o>=</span> <span class=n>yy_train</span><span class=o>.</span><span class=n>reshape</span><span class=p>(</span><span class=mi>200</span><span class=p>,</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>yy_test</span> <span class=o>=</span> <span class=n>yy_test</span><span class=o>.</span><span class=n>reshape</span><span class=p>(</span><span class=mi>200</span><span class=p>,</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 记录loss</span>
+</span></span><span class=line><span class=cl><span class=n>loss_train</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>zeros</span><span class=p>(</span><span class=n>epochs</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>loss_test</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>zeros</span><span class=p>(</span><span class=n>epochs</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 迭代</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>epoch</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>epochs</span><span class=p>):</span>    
+</span></span><span class=line><span class=cl>    <span class=c1># 前向传播 (训练+测试)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_input</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>XX1_train</span><span class=p>,</span><span class=n>weights_ih</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_output</span> <span class=o>=</span> <span class=n>sigmoid</span><span class=p>(</span><span class=n>hidden_input</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_output_with_ones</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>hidden_output</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>total_output</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>hidden_output_with_ones</span><span class=p>,</span><span class=n>weights_ho</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>yy_pred</span> <span class=o>=</span> <span class=n>sigmoid</span><span class=p>(</span><span class=n>total_output</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=n>hidden_input_test</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>XX1_test</span><span class=p>,</span><span class=n>weights_ih</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_output_test</span> <span class=o>=</span> <span class=n>sigmoid</span><span class=p>(</span><span class=n>hidden_input_test</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_output_with_ones_test</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>hidden_output_test</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>total_output_test</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>hidden_output_with_ones_test</span><span class=p>,</span><span class=n>weights_ho</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>yy_pred_test</span> <span class=o>=</span> <span class=n>sigmoid</span><span class=p>(</span><span class=n>total_output_test</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 反向传播</span>
+</span></span><span class=line><span class=cl>    <span class=n>loss_train</span><span class=p>[</span><span class=n>epoch</span><span class=p>]</span> <span class=o>=</span> <span class=o>-</span><span class=n>np</span><span class=o>.</span><span class=n>mean</span><span class=p>(</span><span class=n>yy_train</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>log</span><span class=p>(</span><span class=n>yy_pred</span><span class=p>)</span> <span class=o>+</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>yy_train</span><span class=p>)</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>log</span><span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>yy_pred</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=n>loss_test</span><span class=p>[</span><span class=n>epoch</span><span class=p>]</span> <span class=o>=</span> <span class=o>-</span><span class=n>np</span><span class=o>.</span><span class=n>mean</span><span class=p>(</span><span class=n>yy_test</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>log</span><span class=p>(</span><span class=n>yy_pred_test</span><span class=p>)</span> <span class=o>+</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>yy_test</span><span class=p>)</span> <span class=o>*</span> <span class=n>np</span><span class=o>.</span><span class=n>log</span><span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>yy_pred_test</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># output layer delta</span>
+</span></span><span class=line><span class=cl>    <span class=n>delta_out</span> <span class=o>=</span> <span class=p>(</span><span class=n>yy_pred</span> <span class=o>-</span> <span class=n>yy_train</span><span class=p>)</span> <span class=o>*</span> <span class=n>yy_pred</span> <span class=o>*</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>yy_pred</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>d_weights_ho</span> <span class=o>=</span> <span class=n>hidden_output_with_ones</span><span class=o>.</span><span class=n>T</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>delta_out</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># hidden layer delta</span>
+</span></span><span class=line><span class=cl>    <span class=n>delta_hidden</span> <span class=o>=</span> <span class=n>delta_out</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>weights_ho</span><span class=p>[</span><span class=mi>1</span><span class=p>:]</span><span class=o>.</span><span class=n>T</span><span class=p>)</span> <span class=o>*</span> <span class=n>hidden_output</span> <span class=o>*</span> <span class=p>(</span><span class=mi>1</span> <span class=o>-</span> <span class=n>hidden_output</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>d_weights_ih</span> <span class=o>=</span> <span class=n>XX1_train</span><span class=o>.</span><span class=n>T</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>delta_hidden</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 更新权重</span>
+</span></span><span class=line><span class=cl>    <span class=n>alpha</span> <span class=o>=</span> <span class=mf>0.1</span>
+</span></span><span class=line><span class=cl>    <span class=n>m</span> <span class=o>=</span> <span class=mi>60</span>  <span class=c1># 样本量</span>
+</span></span><span class=line><span class=cl>    <span class=n>weights_ih</span> <span class=o>-=</span> <span class=n>alpha</span> <span class=o>/</span> <span class=n>m</span> <span class=o>*</span> <span class=n>d_weights_ih</span>
+</span></span><span class=line><span class=cl>    <span class=n>weights_ho</span> <span class=o>-=</span> <span class=n>alpha</span> <span class=o>/</span> <span class=n>m</span> <span class=o>*</span> <span class=n>d_weights_ho</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 每1000次输出一次损失</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>epoch</span> <span class=o>%</span> <span class=mi>1000</span> <span class=o>==</span> <span class=mi>0</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s1>&#39;Epoch </span><span class=si>{</span><span class=n>epoch</span><span class=si>}</span><span class=s1>, Loss: </span><span class=si>{</span><span class=n>loss_train</span><span class=p>[</span><span class=n>epoch</span><span class=p>]</span><span class=si>}</span><span class=s1>&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Training set loss value: </span><span class=si>{</span><span class=n>loss_train</span><span class=p>[</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=si>:</span><span class=s2>.3f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Testing set loss value: </span><span class=si>{</span><span class=n>loss_test</span><span class=p>[</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=si>:</span><span class=s2>.3f</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 输出</span>
+</span></span><span class=line><span class=cl><span class=c1># Training set loss value: 0.139</span>
+</span></span><span class=line><span class=cl><span class=c1># Testing set loss value: 0.118</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>figure</span><span class=p>(</span><span class=n>figsize</span><span class=o>=</span><span class=p>(</span><span class=mi>16</span><span class=p>,</span><span class=mi>6</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>subplot</span><span class=p>(</span><span class=mi>121</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>loglog</span><span class=p>(</span><span class=n>loss_train</span><span class=p>,</span><span class=n>label</span><span class=o>=</span><span class=s1>&#39;Train&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>loglog</span><span class=p>(</span><span class=n>loss_test</span><span class=p>,</span><span class=n>label</span><span class=o>=</span><span class=s1>&#39;Test&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>title</span><span class=p>(</span><span class=s2>&#34;Loss function&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>grid</span><span class=p>(</span><span class=kc>True</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>xlabel</span><span class=p>(</span><span class=s1>&#39;epochs&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>ylabel</span><span class=p>(</span><span class=s1>&#39;loss&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>legend</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>subplot</span><span class=p>(</span><span class=mi>122</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1># 绘制分类边界</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>plot_decision_boundary</span><span class=p>(</span><span class=n>X</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>model</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>h</span> <span class=o>=</span> <span class=mf>0.01</span>
+</span></span><span class=line><span class=cl>    <span class=n>x_min</span><span class=p>,</span> <span class=n>x_max</span> <span class=o>=</span> <span class=n>X</span><span class=p>[:,</span> <span class=mi>0</span><span class=p>]</span><span class=o>.</span><span class=n>min</span><span class=p>()</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>X</span><span class=p>[:,</span> <span class=mi>0</span><span class=p>]</span><span class=o>.</span><span class=n>max</span><span class=p>()</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    <span class=n>y_min</span><span class=p>,</span> <span class=n>y_max</span> <span class=o>=</span> <span class=n>X</span><span class=p>[:,</span> <span class=mi>1</span><span class=p>]</span><span class=o>.</span><span class=n>min</span><span class=p>()</span> <span class=o>-</span> <span class=mi>1</span><span class=p>,</span> <span class=n>X</span><span class=p>[:,</span> <span class=mi>1</span><span class=p>]</span><span class=o>.</span><span class=n>max</span><span class=p>()</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    <span class=n>xx</span><span class=p>,</span> <span class=n>yy</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>meshgrid</span><span class=p>(</span><span class=n>np</span><span class=o>.</span><span class=n>arange</span><span class=p>(</span><span class=n>x_min</span><span class=p>,</span> <span class=n>x_max</span><span class=p>,</span> <span class=n>h</span><span class=p>),</span> <span class=n>np</span><span class=o>.</span><span class=n>arange</span><span class=p>(</span><span class=n>y_min</span><span class=p>,</span> <span class=n>y_max</span><span class=p>,</span> <span class=n>h</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=n>Z</span> <span class=o>=</span> <span class=n>model</span><span class=p>(</span><span class=n>np</span><span class=o>.</span><span class=n>c_</span><span class=p>[</span><span class=n>xx</span><span class=o>.</span><span class=n>ravel</span><span class=p>(),</span> <span class=n>yy</span><span class=o>.</span><span class=n>ravel</span><span class=p>()])</span>
+</span></span><span class=line><span class=cl>    <span class=n>Z</span> <span class=o>=</span> <span class=n>Z</span><span class=o>.</span><span class=n>reshape</span><span class=p>(</span><span class=n>xx</span><span class=o>.</span><span class=n>shape</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>plt</span><span class=o>.</span><span class=n>contourf</span><span class=p>(</span><span class=n>xx</span><span class=p>,</span> <span class=n>yy</span><span class=p>,</span> <span class=n>Z</span><span class=p>,</span> <span class=n>cmap</span><span class=o>=</span><span class=n>plt</span><span class=o>.</span><span class=n>cm</span><span class=o>.</span><span class=n>Spectral</span><span class=p>,</span> <span class=n>alpha</span><span class=o>=</span><span class=mf>0.8</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>plt</span><span class=o>.</span><span class=n>scatter</span><span class=p>(</span><span class=n>X</span><span class=p>[:,</span> <span class=mi>0</span><span class=p>],</span> <span class=n>X</span><span class=p>[:,</span> <span class=mi>1</span><span class=p>],</span> <span class=n>c</span><span class=o>=</span><span class=n>y</span><span class=p>,</span> <span class=n>cmap</span><span class=o>=</span><span class=n>plt</span><span class=o>.</span><span class=n>cm</span><span class=o>.</span><span class=n>Spectral</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 定义模型函数</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>predict</span><span class=p>(</span><span class=n>XX</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>XX1</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>XX</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_layer_input</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>XX1</span><span class=p>,</span> <span class=n>weights_ih</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_layer_output</span> <span class=o>=</span> <span class=n>sigmoid</span><span class=p>(</span><span class=n>hidden_layer_input</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>hidden_layer_output_with_ones</span> <span class=o>=</span> <span class=n>with_ones</span><span class=p>(</span><span class=n>hidden_layer_output</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>output_layer_input</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>dot</span><span class=p>(</span><span class=n>hidden_layer_output_with_ones</span><span class=p>,</span> <span class=n>weights_ho</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>predicted_output</span> <span class=o>=</span> <span class=n>sigmoid</span><span class=p>(</span><span class=n>output_layer_input</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>(</span><span class=n>predicted_output</span> <span class=o>&gt;</span> <span class=mf>0.5</span><span class=p>)</span><span class=o>.</span><span class=n>astype</span><span class=p>(</span><span class=nb>float</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>plot_decision_boundary</span><span class=p>(</span><span class=n>XX_train</span><span class=p>,</span> <span class=n>yy_train</span><span class=o>.</span><span class=n>flatten</span><span class=p>(),</span> <span class=n>predict</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>title</span><span class=p>(</span><span class=s1>&#39;Decision Boundary for Classification&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>xlabel</span><span class=p>(</span><span class=s1>&#39;Feature 1&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>ylabel</span><span class=p>(</span><span class=s1>&#39;Feature 2&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>plt</span><span class=o>.</span><span class=n>show</span><span class=p>()</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=/collections/drl_task03/image-6.png width=1322 height=550 srcset="/collections/drl_task03/image-6_hu4246154e6b54ad38eae2aa3f7f95aad7_82835_480x0_resize_box_3.png 480w, /collections/drl_task03/image-6_hu4246154e6b54ad38eae2aa3f7f95aad7_82835_1024x0_resize_box_3.png 1024w" loading=lazy alt=二分类结果可视化 class=gallery-image data-flex-grow=240 data-flex-basis=576px></p></section><footer class=article-footer><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span></span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//hugo-theme-stack.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2023 -
+2024 Diaspora</section><section class=powerby>Mark's personal repository<br>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.21.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
