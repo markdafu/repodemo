@@ -47,6 +47,7 @@ weight: 2
 - [ ] [Digital Signal Processing (EPFL)](https://www.coursera.org/specializations/digital-signal-processing#courses)
 - [ ] [Simulation and modeling of natural processes](https://www.coursera.org/learn/modeling-simulation-natural-processes)
 - [ ] [Emotional and Social Intelligence](https://www.coursera.org/learn/emotional-and-social-intelligence)
+- [ ] [Narrative Economics](https://www.coursera.org/learn/narrative-economics#modules)
 
 ## Projects
 
